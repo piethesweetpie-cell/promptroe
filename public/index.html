@@ -2219,6 +2219,20 @@
     height:13px;
     background:rgba(17,24,39,0.12);
   }
+  .spb-top-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; }
+  /* When the content column gets tight, keep the top tabs on one line and let
+     them scroll horizontally instead of orphaning a single tab onto a 2nd row. */
+  @media (max-width: 1180px) {
+    .spb-top-tabs {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 2px;
+    }
+    .spb-top-tabs::-webkit-scrollbar { display: none; }
+    .spb-top-tabs > .spb-tab-wrap { flex: 0 0 auto; }
+  }
   .page-shell { width: calc(100% - 64px); max-width: 1440px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 40px; align-items: start; padding: 30px 0 64px; flex: 1 0 auto; }
   .main-panel { min-width: 0; }
   .prompt-cart { width: 380px; position: sticky; top: 96px; align-self: start; background: #ffffff; border-radius: 20px; border: 1px solid #e5e7eb; box-shadow: 0 4px 24px rgba(17,24,39,0.06); overflow: hidden; }
@@ -2336,7 +2350,7 @@
 
   <header class="app-header">
     <div class="header-inner">
-      <div style="display: flex; align-items: center; gap: 12px; min-width: 0;">
+      <div onClick="{{ onGoUsage }}" title="사용법으로 이동" style="display: flex; align-items: center; gap: 12px; min-width: 0; cursor: pointer;">
         <img src="assets/img_001_52390ea845ed.png" alt="ONROE" class="brand-logo" style="width: 24px; height: 24px; object-fit: contain; display: block; flex:0 0 auto;" />
         <div style="display: flex; align-items: center; gap: 8px; min-width:0;">
           <span style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #09090B; white-space:nowrap;">PROMPT ROE</span>
@@ -2366,7 +2380,7 @@
         <p style="{{ active.descStyle }}">{{ active.desc }}</p>
 
         <!-- TABS -->
-        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px;">
+        <div class="spb-top-tabs">
           <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="5">
             <div class="spb-tab-wrap" style="position:relative; display:inline-flex;">
               <button onClick="{{ tab.onSelect }}" style="{{ tab.style }}">
@@ -3444,7 +3458,14 @@ class Component extends DCLogic {
       "nl-midday": "한낮의 강렬한 햇빛으로 대비가 강하고 깊고 선명한 그림자를 표현합니다.",
       "nl-overcast": "구름에 가려진 부드러운 빛으로 그림자 없이 차분하고 은은한 분위기를 만듭니다.",
       "nl-window-side": "창문으로 들어오는 빛을 이용해 인물의 입체감과 드라마틱한 분위기를 극대화합니다.",
-      "nl-dappled": "숲속 나뭇잎 사이로 햇살이 통과하며 생기는 싱그럽고 얼룩덜룩한 빛 패턴을 만듭니다."
+      "nl-dappled": "숲속 나뭇잎 사이로 햇살이 통과하며 생기는 싱그럽고 얼룩덜룩한 빛 패턴을 만듭니다.",
+      "outdoor-convenience": "비 오는 밤 편의점 외관을 배경으로, 유리문 너머 흐릿하게 비치는 내부 풍경과 젖은 보도를 연출합니다.",
+      "outdoor-glass-reflection": "빗물에 젖은 바닥과 유리창에 청록색·코랄색 네온 불빛이 은은하게 반사되는 고독한 야간 공간을 만듭니다.",
+      "mood-night-light": "내부 형광등과 외부 네온빛이 차분하게 섞여 들며 아날로그 필름 느낌의 몽환적인 야간 보케 배경을 표현합니다.",
+      "mood-analog": "부드러운 자연광과 차분한 그린·베이지 톤의 색감으로 감성적인 야외 다큐멘터리 사진 분위기를 표현합니다.",
+      "mood-cinema-light": "큰 창문을 통해 막 시작되는 골든아워의 따뜻한 햇살이 비쳐 극적인 명암 대비를 만듭니다.",
+      "mood-a24": "정적이고 차분한 분위기 속에 물 빠진 듯한 따뜻한 색감으로 인디 영화(A24) 스타일의 감성을 만듭니다.",
+      "mood-snap-lens": "50mm 렌즈의 얕은 심도로 창밖 풍경을 부드럽게 아웃포커싱하여 감성적인 다큐멘터리 분위기를 표현합니다."
     };
 
     const tabBase = "position: relative; display: inline-flex; align-items: center; gap: 8px; padding: 10px 17px; border-radius: 999px; font-size: 14.5px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: all .15s ease; font-family: 'Noto Sans KR',sans-serif;";
@@ -3642,7 +3663,7 @@ class Component extends DCLogic {
     if (activeId === 'detail') gridStyle = "display:grid; grid-template-columns: repeat(5, minmax(0, 170px)); column-gap: 22px; row-gap: 28px; align-items:start; justify-content:start;";
     if (activeId === 'skinFinish') gridStyle = "display:grid; grid-template-columns: repeat(5, minmax(0, 170px)); column-gap: 22px; row-gap: 28px; align-items:start; justify-content:start;";
     if (activeId === 'film') gridStyle = "display:grid; grid-template-columns: repeat(5, minmax(0, 170px)); column-gap: 22px; row-gap: 28px; align-items:start; justify-content:start;";
-    if (activeId === 'filmStock') gridStyle = "display:grid; grid-template-columns: repeat(3, minmax(0, 170px)); column-gap: 52px; row-gap: 34px; align-items:start; justify-content:start;";
+    if (activeId === 'filmStock') gridStyle = "display:grid; grid-template-columns: repeat(5, minmax(0, 170px)); column-gap: 22px; row-gap: 28px; align-items:start; justify-content:start;";
     if (activeId === 'filter') gridStyle = "display:grid; grid-template-columns: repeat(5, minmax(0, 170px)); column-gap: 22px; row-gap: 28px; align-items:start; justify-content:start;";
 
     const displayOptions = activeId === 'film' ? (this.getCat('film').options || []) : (active.options || []);
@@ -3938,6 +3959,7 @@ class Component extends DCLogic {
       copyIcon: this.state.copied ? 'check' : 'content_copy',
       onCopy: () => this.copy(),
       onClearAll: () => this.clearAll(),
+      onGoUsage: () => this.selectCat('usage'),
       copied: this.state.copied
     };
   }
