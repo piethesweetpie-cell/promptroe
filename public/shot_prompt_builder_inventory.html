@@ -1,0 +1,1964 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shot Prompt Builder 전체 메뉴·프롬프트 정리</title>
+<style>
+:root{--bg:#f5f7fb;--panel:#fff;--text:#111827;--muted:#6b7280;--line:#dfe5ef;--blue:#2054dc;--blue2:#eef5ff;--ink:#182236;--green:#0f766e}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:"Noto Sans KR","Segoe UI",system-ui,sans-serif;line-height:1.55}.wrap{max-width:1440px;margin:0 auto;padding:34px 24px 56px}.hero{background:linear-gradient(135deg,#ffffff,#edf5ff);border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:0 10px 30px rgba(17,24,39,.06)}h1{margin:0 0 8px;font-size:30px;letter-spacing:-.02em}.hero p{margin:6px 0;color:var(--muted)}.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.pill{display:inline-flex;align-items:center;gap:6px;padding:7px 11px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:13px;font-weight:700;color:#374151}.toc{position:sticky;top:0;z-index:2;margin:18px -24px 24px;padding:12px 24px;background:rgba(245,247,251,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;overflow:visible}.toc a{white-space:nowrap;text-decoration:none;color:#374151;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-size:13px;font-weight:700}.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px;margin:18px 0;box-shadow:0 4px 18px rgba(17,24,39,.045)}.section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:8px}.eyebrow{margin:0 0 4px;color:var(--blue);font-size:12px;font-weight:900;letter-spacing:.08em}.section-head h2{margin:0;font-size:22px;letter-spacing:-.02em}.section-head small{color:var(--muted);font-size:13px;font-weight:700}.count{flex:0 0 auto;padding:6px 10px;border-radius:999px;background:var(--blue2);color:var(--blue);font-weight:800;font-size:13px}.desc{margin:6px 0 16px;color:#4b5563}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}.mini{border:1px solid var(--line);border-radius:12px;padding:13px;background:#fbfcff}.mini h3{margin:0 0 7px;font-size:15px}.mini p{margin:4px 0;color:#4b5563;font-size:13px}.usage{counter-reset:item}.usage li{margin:10px 0;padding:12px 14px;background:#fbfcff;border:1px solid var(--line);border-radius:12px}.usage strong{display:block;margin-bottom:4px}.table-wrap{overflow:visible;border:1px solid var(--line);border-radius:14px}table{width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed}col.col-no{width:4.5%}col.col-label{width:15%}col.col-tip{width:31%}col.col-prompt{width:39%}col.col-id{width:10.5%}th,td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left;font-size:13.5px;overflow-wrap:anywhere;word-break:break-word}th{position:sticky;top:0;background:#f8fafc;color:#374151;font-size:12px;text-transform:uppercase;letter-spacing:.04em;z-index:1}tr:last-child td{border-bottom:0}.num{width:auto;color:#64748b;font-weight:800}.label{font-weight:800}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#f3f4f6;border:1px solid #e5e7eb;border-radius:7px;padding:2px 5px;color:#374151}.muted{color:#9ca3af}.section-row td{background:#f7f9fd;color:#64748b;font-weight:900;letter-spacing:.06em}.prompt-copy{width:100%;min-width:0;border:1px solid #26334d;background:var(--ink);color:#e8eefc;border-radius:10px;padding:10px 11px;text-align:left;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:start;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12.5px;line-height:1.55}.prompt-copy:hover{border-color:#4f8df7;box-shadow:0 0 0 3px rgba(32,84,220,.14)}.prompt-copy b{font-family:"Noto Sans KR",system-ui,sans-serif;color:#93c5fd;white-space:nowrap;align-self:start}.prompt-copy.copied{border-color:#14b8a6;background:#0f2f31}.prompt-copy.copied b{color:#5eead4}.controls-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}.control-item{background:#fbfcff;border:1px solid var(--line);border-radius:12px;padding:13px}.control-item b{display:block;margin-bottom:4px}@media(max-width:760px){.wrap{padding:22px 14px 40px}.hero{padding:20px}.toc{margin-left:-14px;margin-right:-14px;padding-left:14px;padding-right:14px}.card{padding:16px}table,thead,tbody,tr,th,td{display:block}thead{display:none}tr{border-bottom:1px solid var(--line);padding:10px 0}tr:last-child{border-bottom:0}td{border-bottom:0;padding:7px 10px}.num{width:auto}.section-row td{padding:10px 12px}.prompt-copy{min-width:0}.section-head{display:block}.count{display:inline-flex;margin-top:8px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <h1>Shot Prompt Builder 전체 메뉴·버튼·프롬프트 정리</h1>
+    <p>현재 사이트 <code>public/index.html</code>의 실제 데이터와 렌더링 로직에서 추출했습니다. 프롬프트 셀을 누르면 해당 프롬프트 문장만 복사됩니다.</p>
+    <div class="meta"><span class="pill">상단 메뉴 6개</span><span class="pill">표시 카테고리 14개 + 제품샷 샷 크기</span><span class="pill">복사 가능한 프롬프트 248개</span><span class="pill">생성일 2026-06-28</span></div>
+  </header>
+  <nav class="toc" aria-label="문서 이동">
+    <a href="#nav">상단 메뉴</a><a href="#buttons">공통 버튼</a><a href="#usage">사용법</a>
+    <a href="#cat-frame">샷 크기</a><a href="#cat-angle">시점</a><a href="#cat-composition">구도</a><a href="#cat-lens">렌즈</a><a href="#cat-light">라이팅</a><a href="#cat-naturalLight">자연광</a><a href="#cat-bg">배경</a><a href="#cat-bgProduct">배경</a><a href="#cat-booster">부스터</a><a href="#cat-detail">디테일</a><a href="#cat-skinFinish">피부 표현</a><a href="#cat-film">효과</a><a href="#cat-filmStock">필름</a><a href="#cat-handcut">손연출</a><a href="#cat-filter">프리셋</a>
+    <a href="#cat-frame-product">제품샷</a><a href="#cat-technique">필름 효과 데이터</a>
+  </nav>
+  <section class="card" id="nav"><div class="section-head"><div><p class="eyebrow">NAVIGATION</p><h2>상단 메뉴와 하위 메뉴</h2></div></div>
+    <div class="grid"><div class="mini"><h3>사용법 <small><code>usage</code></small></h3><p>아이콘: <code>help</code> / 이동 대상: <code>usage</code></p><p>툴팁: 이 도구를 어떻게 쓰는지 먼저 확인해요.</p><p>하위 메뉴: 사용법</p></div><div class="mini"><h3>촬영 <small><code>shooting</code></small></h3><p>아이콘: <code>videocam</code> / 이동 대상: <code>frame</code></p><p>툴팁: 샷 크기, 시점, 구도, 렌즈 중 필요한 것만 고르세요.</p><p>하위 메뉴: 샷 크기 · 시점 · 구도 · 렌즈</p></div><div class="mini"><h3>조명 <small><code>light</code></small></h3><p>아이콘: <code>wb_sunny</code> / 이동 대상: <code>light</code></p><p>툴팁: 필요할 때만 빛의 방향과 분위기를 추가하세요.</p><p>하위 메뉴: 라이팅 · 자연광</p></div><div class="mini"><h3>배경 <small><code>bg</code></small></h3><p>아이콘: <code>landscape</code> / 이동 대상: <code>bg</code></p><p>툴팁: 필요할 때만 공간과 무드를 추가하세요.</p><p>하위 메뉴: 배경 · 배경</p></div><div class="mini"><h3>마무리 <small><code>finishing</code></small></h3><p>아이콘: <code>auto_awesome</code> / 이동 대상: <code>booster</code></p><p>툴팁: 부스터, 디테일, 효과, 필름 중 필요한 것만 더하세요.</p><p>하위 메뉴: 부스터 · 디테일 · 피부 표현 · 효과 · 필름</p></div><div class="mini"><h3>프리셋 <small><code>filter</code></small></h3><p>아이콘: <code>tune</code> / 이동 대상: <code>filter</code></p><p>툴팁: 원할 때만 문장 뼈대가 되는 프리셋을 고르세요.</p><p>하위 메뉴: 프리셋</p></div></div>
+  </section>
+  <section class="card" id="buttons"><div class="section-head"><div><p class="eyebrow">CONTROLS</p><h2>공통 버튼·입력·동작</h2></div></div>
+    <div class="controls-list"><div class="control-item"><b>로고/제목 영역</b>클릭 시 사용법 화면으로 이동. 툴팁/타이틀: 사용법으로 이동</div><div class="control-item"><b>이미지 / 영상 세그먼트</b>현재 모드 값을 이미지 또는 영상으로 전환합니다.</div><div class="control-item"><b>인물샷/제품샷 전환</b>샷 크기 탭에서 노출. 라벨: 제품샷으로 변경 또는 인물샷으로 변경</div><div class="control-item"><b>주제/대상 입력창</b>오른쪽 프롬프트 카트에서 주제 문장을 입력하면 최종 프롬프트 앞부분에 반영됩니다.</div><div class="control-item"><b>전체 비우기</b>선택한 모든 요소를 삭제합니다.</div><div class="control-item"><b>선택 칩 삭제</b>장바구니에 담긴 개별 칩 버튼을 누르면 해당 요소를 제거합니다.</div><div class="control-item"><b>프롬프트 복사</b>조합된 최종 프롬프트를 클립보드에 복사합니다. 복사 후 라벨은 복사 완료로 바뀝니다.</div><div class="control-item"><b>키보드 이동</b><code>&lt;</code>, <code>&gt;</code>, 좌우 방향키로 표시 메뉴 순서를 이동합니다.</div></div>
+  </section>
+  <section class="card" id="usage"><div class="section-head"><div><p class="eyebrow">USAGE</p><h2>사용법 화면 내용</h2></div><span class="count">5단계</span></div>
+    <ol class="usage"><li><strong>1. 프롬프트 마트입니다</strong>필요한 부분만 담고, 필요하지 않은 메뉴는 스킵하세요.</li><li><strong>2. 선택하면 자동으로 장바구니에 담겨요.</strong>모두 담았다면 복사하기를 클릭해요. 키보드 &lt; &gt; 버튼으로도 페이지 이동이 가능합니다.</li><li><strong>3. 오른쪽 주제/대상 입력창에 만들고 싶은 아이템을 작성합니다.</strong><p>예시: 예) K-POP 아이돌 스타일의 모델</p></li><li><strong>4. 복사한 프롬프트를 붙여 넣으세요</strong><p><code>K-POP 아이돌 스타일의 모델, medium-full shot, framed from mid-thigh up to the top of the head, full torso and upper legs visible, generous headroom, eye-level camera....</code></p></li><li><strong>5. 선택한 효과가 적용됩니다</strong>예를 들어 카우보이 샷, 아이 레벨, 시네마틱 라이팅, 빛 번짐, 색수차를 고르면 해당 효과가 적용됩니다.<p>결과: 효과가 적용된 K-POP 아이돌 스타일의 모델 사진 완성!</p><p>샘플 이미지: <code>assets/img_124_1ec6de6a3b2a.png</code></p></li></ol>
+  </section>
+  <section class="card" id="cat-frame">
+    <div class="section-head">
+      <div><p class="eyebrow">SHOOTING</p><h2>샷 크기 <small>frame</small></h2></div>
+      <span class="count">8개 항목</span>
+    </div>
+    <p class="desc"><strong>어떤 샷 크기로 담을까요?</strong> - 번호가 표시된 프레이밍 영역 위에 마우스를 올리면 각 샷 크기 설명을 바로 확인할 수 있습니다.</p>
+    <div class="table-wrap"><table><colgroup><col class="col-no"><col class="col-label"><col class="col-tip"><col class="col-prompt"><col class="col-id"></colgroup>
+      <thead><tr><th>No</th><th>메뉴/버튼명</th><th>툴팁</th><th>프롬프트 복사 셀</th><th>ID</th></tr></thead>
+      <tbody><tr>
+      <td class="num">1</td>
+      <td class="label">익스트림 클로즈업</td>
+      <td>제품 주변 분위기와 소품까지 함께 보여주는 컷</td>
+      <td><button class="prompt-copy" type="button" data-copy="extreme close-up" title="프롬프트만 복사"><span>extreme close-up</span><b>복사</b></button></td>
+      <td><code>frame-1</code></td>
+    </tr>
+<tr>
+      <td class="num">2</td>
+      <td class="label">클로즈업</td>
+      <td>얼굴과 표정에 집중하는 가까운 컷</td>
+      <td><button class="prompt-copy" type="button" data-copy="close-up shot" title="프롬프트만 복사"><span>close-up shot</span><b>복사</b></button></td>
+      <td><code>frame-2</code></td>
+    </tr>
+<tr>
+      <td class="num">3</td>
+      <td class="label">루즈 클로즈업</td>
+      <td>얼굴과 상반신이 함께 들어오는 컷</td>
+      <td><button class="prompt-copy" type="button" data-copy="loose close-up" title="프롬프트만 복사"><span>loose close-up</span><b>복사</b></button></td>
+      <td><code>frame-3</code></td>
+    </tr>
+<tr>
+      <td class="num">4</td>
+      <td class="label">미디엄 샷</td>
+      <td>허리 위까지, 인물과 제스처가 보이는 기본 구도</td>
+      <td><button class="prompt-copy" type="button" data-copy="medium shot" title="프롬프트만 복사"><span>medium shot</span><b>복사</b></button></td>
+      <td><code>frame-4</code></td>
+    </tr>
+<tr>
+      <td class="num">5</td>
+      <td class="label">카우보이 샷</td>
+      <td>허벅지 위까지 담는 시네마틱 구도</td>
+      <td><button class="prompt-copy" type="button" data-copy="medium-full shot, framed from mid-thigh up to the top of the head, full torso and upper legs visible, generous headroom" title="프롬프트만 복사"><span>medium-full shot, framed from mid-thigh up to the top of the head, full torso and upper legs visible, generous headroom</span><b>복사</b></button></td>
+      <td><code>frame-5</code></td>
+    </tr>
+<tr>
+      <td class="num">6</td>
+      <td class="label">풀 샷</td>
+      <td>머리부터 발끝까지 전신을 담는 컷</td>
+      <td><button class="prompt-copy" type="button" data-copy="full shot" title="프롬프트만 복사"><span>full shot</span><b>복사</b></button></td>
+      <td><code>frame-6</code></td>
+    </tr>
+<tr>
+      <td class="num">7</td>
+      <td class="label">와이드 샷</td>
+      <td>인물과 주변 공간을 함께 담는 넓은 구도</td>
+      <td><button class="prompt-copy" type="button" data-copy="wide shot" title="프롬프트만 복사"><span>wide shot</span><b>복사</b></button></td>
+      <td><code>frame-7</code></td>
+    </tr>
+<tr>
+      <td class="num">8</td>
+      <td class="label">익스트림 와이드 샷</td>
+      <td>인물이 작게 보일 만큼 광활한 배경을 강조</td>
+      <td><button class="prompt-copy" type="button" data-copy="extreme wide shot" title="프롬프트만 복사"><span>extreme wide shot</span><b>복사</b></button></td>
+      <td><code>frame-8</code></td>
+    </tr></tbody>
+    </table></div>
+  </section>
+<section class="card" id="cat-frame-product">
+    <div class="section-head">
+      <div><p class="eyebrow">SHOOTING</p><h2>샷 크기 - 제품샷 <small>frame-product</small></h2></div>
+      <span class="count">6개 항목</span>
+    </div>
+    <p class="desc"><strong>어떤 제품 샷으로 담을까요?</strong> - 제품을 어떤 방식으로 보여줄지 골라 담으세요.</p>
+    <div class="table-wrap"><table><colgroup><col class="col-no"><col class="col-label"><col class="col-tip"><col class="col-prompt"><col class="col-id"></colgroup>
+      <thead><tr><th>No</th><th>메뉴/버튼명</th><th>툴팁</th><th>프롬프트 복사 셀</th><th>ID</th></tr></thead>
+      <tbody><tr>
+      <td class="num">1</td>
+      <td class="label">매크로샷</td>
+      <td>표면 질감과 미세 디테일을 극단적으로 가까이 잡는 컷</td>
+      <td><button class="prompt-copy" type="button" data-copy="extreme macro product framing, very tight crop, magnified surface texture, fine material details, crisp micro highlights, premium commercial product photography, angle-neutral framing, preserve the selected camera angle" title="프롬프트만 복사"><span>extreme macro product framing, very tight crop, magnified surface texture, fine material details, crisp micro highlights, premium commercial product photography, angle-neutral framing, preserve the selected camera angle</span><b>복사</b></button></td>
+      <td><code>product-macro</code></td>
+    </tr>
+<tr>
+      <td class="num">2</td>
+      <td class="label">클로즈업</td>
+      <td>제품을 가까이 또렷하게 담는 깔끔한 컷</td>
+      <td><button class="prompt-copy" type="button" data-copy="close-up product framing, product fills most of the frame, clean centered composition, sharp details, refined material texture, premium commercial advertising photography, angle-neutral framing, preserve the selected camera angle" title="프롬프트만 복사"><span>close-up product framing, product fills most of the frame, clean centered composition, sharp details, refined material texture, premium commercial advertising photography, angle-neutral framing, preserve the selected camera angle</span><b>복사</b></button></td>
+      <td><code>product-close-up</code></td>
+    </tr>
+<tr>
+      <td class="num">3</td>
+      <td class="label">미디엄샷</td>
+      <td>제품 전체 형태와 디테일이 균형 있게 보이는 컷</td>
+      <td><button class="prompt-copy" type="button" data-copy="medium product framing, the full product is clearly visible with balanced surrounding space, clean premium composition, strong product presence, detailed material expression, commercial product photography, angle-neutral framing, preserve the selected camera angle" title="프롬프트만 복사"><span>medium product framing, the full product is clearly visible with balanced surrounding space, clean premium composition, strong product presence, detailed material expression, commercial product photography, angle-neutral framing, preserve the selected camera angle</span><b>복사</b></button></td>
+      <td><code>product-medium</code></td>
+    </tr>
+<tr>
+      <td class="num">4</td>
+      <td class="label">풀샷</td>
+      <td>제품 전체 실루엣과 주변 여백까지 넉넉하게 담는 컷</td>
+      <td><button class="prompt-copy" type="button" data-copy="full product framing, entire product visible within the frame, generous negative space around the subject, clean luxury layout, elegant commercial product presentation, angle-neutral framing, preserve the selected camera angle" title="프롬프트만 복사"><span>full product framing, entire product visible within the frame, generous negative space around the subject, clean luxury layout, elegant commercial product presentation, angle-neutral framing, preserve the selected camera angle</span><b>복사</b></button></td>
+      <td><code>product-full</code></td>
+    </tr>
+<tr>
+      <td class="num">5</td>
+      <td class="label">히어로샷</td>
+      <td>제품을 메인 비주얼처럼 고급스럽게 강조하는 컷</td>
+      <td><button class="prompt-copy" type="button" data-copy="hero product framing, product presented as the dominant main focus, elevated premium presentation, refined luxury advertising mood, dramatic yet clean commercial lighting, strong visual impact, angle-neutral framing, preserve the selected camera angle" title="프롬프트만 복사"><span>hero product framing, product presented as the dominant main focus, elevated premium presentation, refined luxury advertising mood, dramatic yet clean commercial lighting, strong visual impact, angle-neutral framing, preserve the selected camera angle</span><b>복사</b></button></td>
+      <td><code>product-hero</code></td>
+    </tr>
+<tr>
+      <td class="num">6</td>
+      <td class="label">콘셉트샷</td>
+      <td>제품 주변 분위기와 소품까지 함께 보여주는 컷</td>
+      <td><button class="prompt-copy" type="button" data-copy="environmental product framing, product shown with curated surrounding props and atmospheric context, storytelling composition, branded advertising mood, elegant lifestyle product presentation, angle-neutral framing, preserve the selected camera angle" title="프롬프트만 복사"><span>environmental product framing, product shown with curated surrounding props and atmospheric context, storytelling composition, branded advertising mood, elegant lifestyle product presentation, angle-neutral framing, preserve the selected camera angle</span><b>복사</b></button></td>
+      <td><code>product-concept</code></td>
+    </tr></tbody>
+    </table></div>
+  </section>
+<section class="card" id="cat-angle">
+    <div class="section-head">
+      <div><p class="eyebrow">SHOOTING</p><h2>시점 <small>angle</small></h2></div>
+      <span class="count">17개 항목</span>
+    </div>
+    <p class="desc"><strong>어느 시점에서 볼까요?</strong> - 카메라의 높이와 방향이 인상을 결정합니다.</p>
+    <div class="table-wrap"><table><colgroup><col class="col-no"><col class="col-label"><col class="col-tip"><col class="col-prompt"><col class="col-id"></colgroup>
+      <thead><tr><th>No</th><th>메뉴/버튼명</th><th>툴팁</th><th>프롬프트 복사 셀</th><th>ID</th></tr></thead>
+      <tbody><tr>
+      <td class="num">1</td>
+      <td class="label">아이 레벨</td>
+      <td>눈높이에서 자연스럽고 편안하게 보여줘요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="eye-level camera" title="프롬프트만 복사"><span>eye-level camera</span><b>복사</b></button></td>
+      <td><code>eye</code></td>
+    </tr>
+<tr>
+      <td class="num">2</td>
+      <td class="label">미디엄 클로즈업</td>
+      <td>얼굴과 상체를 중심으로 인물을 또렷하게 보여줘요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="medium close-up" title="프롬프트만 복사"><span>medium close-up</span><b>복사</b></button></td>
+      <td><code>mcu</code></td>
+    </tr>
+<tr>
+      <td class="num">3</td>
+      <td class="label">하이 앵글</td>
+      <td>위에서 내려다보는 시점으로 작고 약해 보일 수 있어요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="high angle, looking down" title="프롬프트만 복사"><span>high angle, looking down</span><b>복사</b></button></td>
+      <td><code>high</code></td>
+    </tr>
+<tr>
+      <td class="num">4</td>
+      <td class="label">로우 앵글</td>
+      <td>아래에서 올려다보는 시점으로 강하고 당당해 보여요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="low angle, looking up" title="프롬프트만 복사"><span>low angle, looking up</span><b>복사</b></button></td>
+      <td><code>low</code></td>
+    </tr>
+<tr>
+      <td class="num">5</td>
+      <td class="label">오버 더 숄더 샷</td>
+      <td>어깨 너머로 바라보는 구도로 대화 장면에 좋아요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="over-the-shoulder shot" title="프롬프트만 복사"><span>over-the-shoulder shot</span><b>복사</b></button></td>
+      <td><code>ots</code></td>
+    </tr>
+<tr>
+      <td class="num">6</td>
+      <td class="label">1인칭 시점 샷</td>
+      <td>내가 직접 바라보는 듯한 몰입감을 줘요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="point-of-view shot, first person" title="프롬프트만 복사"><span>point-of-view shot, first person</span><b>복사</b></button></td>
+      <td><code>pov</code></td>
+    </tr>
+<tr>
+      <td class="num">7</td>
+      <td class="label">더치 앵글</td>
+      <td>화면을 비스듬히 기울여 긴장감이나 불안감을 만들어요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="dutch angle, tilted camera" title="프롬프트만 복사"><span>dutch angle, tilted camera</span><b>복사</b></button></td>
+      <td><code>dutch</code></td>
+    </tr>
+<tr>
+      <td class="num">8</td>
+      <td class="label">조감도</td>
+      <td>높은 곳에서 내려다보며 공간 전체를 보여줘요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="bird&#39;s-eye view, top-down" title="프롬프트만 복사"><span>bird&#39;s-eye view, top-down</span><b>복사</b></button></td>
+      <td><code>bird</code></td>
+    </tr>
+<tr>
+      <td class="num">9</td>
+      <td class="label">웜즈 아이 뷰</td>
+      <td>아주 낮은 위치에서 올려다봐 웅장하게 보여줘요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="worm&#39;s-eye view, from below" title="프롬프트만 복사"><span>worm&#39;s-eye view, from below</span><b>복사</b></button></td>
+      <td><code>worm</code></td>
+    </tr>
+<tr>
+      <td class="num">10</td>
+      <td class="label">상황 설명용 원경</td>
+      <td>인물보다 배경과 상황을 넓게 보여줘요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="establishing shot" title="프롬프트만 복사"><span>establishing shot</span><b>복사</b></button></td>
+      <td><code>est</code></td>
+    </tr>
+<tr>
+      <td class="num">11</td>
+      <td class="label">약한 하이앵글</td>
+      <td>하이앵글보다 완만하게 살짝 위에서 내려다보는 각도. 인물이 갸름하고 친근해 보여서 인물·셀카·프로필에 실사용 빈도가 가장 높습니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="slightly high angle, camera looking gently down from just above eye level, subtly flattering and approachable perspective" title="프롬프트만 복사"><span>slightly high angle, camera looking gently down from just above eye level, subtly flattering and approachable perspective</span><b>복사</b></button></td>
+      <td><code>angle-slight-high</code></td>
+    </tr>
+<tr>
+      <td class="num">12</td>
+      <td class="label">약한 로우앵글</td>
+      <td>로우앵글보다 완만하게 약간 아래에서 올려본 각도. 과하지 않게 당당하고 다리가 길어 보여서 패션·전신 컷에 무난하게 잘 먹힙니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="slightly low angle, camera looking gently up from just below eye level, subtly empowering and confident perspective" title="프롬프트만 복사"><span>slightly low angle, camera looking gently up from just below eye level, subtly empowering and confident perspective</span><b>복사</b></button></td>
+      <td><code>angle-slight-low</code></td>
+    </tr>
+<tr>
+      <td class="num">13</td>
+      <td class="label">직부감 / 탑다운</td>
+      <td>바로 위에서 90도로 내려찍는 정수직 앵글. 음식·제품·플랫레이의 표준이라 제품 촬영에 필수급입니다. (조감도는 비스듬한 부감, 이건 완전 수직이라 별개입니다.)</td>
+      <td><button class="prompt-copy" type="button" data-copy="top-down flat lay angle, camera pointing straight down at 90 degrees, perfectly overhead bird&#39;s-eye flat perspective" title="프롬프트만 복사"><span>top-down flat lay angle, camera pointing straight down at 90 degrees, perfectly overhead bird&#39;s-eye flat perspective</span><b>복사</b></button></td>
+      <td><code>angle-topdown</code></td>
+    </tr>
+<tr>
+      <td class="num">14</td>
+      <td class="label">프로파일 / 측면</td>
+      <td>정확히 옆에서 90도로 본 측면 앵글. 옆선·실루엣·서사적 무드에 강합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="profile side angle, subject viewed directly from the side at 90 degrees, clean lateral silhouette and facial contour" title="프롬프트만 복사"><span>profile side angle, subject viewed directly from the side at 90 degrees, clean lateral silhouette and facial contour</span><b>복사</b></button></td>
+      <td><code>angle-profile</code></td>
+    </tr>
+<tr>
+      <td class="num">15</td>
+      <td class="label">4분의 3 앵글</td>
+      <td>정면과 측면 사이 45도. 얼굴·제품에 입체감을 주는 가장 보편적인 인물 각도라 범용성이 큽니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="three-quarter angle, subject turned about 45 degrees between front and side, natural dimensional facial volume" title="프롬프트만 복사"><span>three-quarter angle, subject turned about 45 degrees between front and side, natural dimensional facial volume</span><b>복사</b></button></td>
+      <td><code>angle-three-quarter</code></td>
+    </tr>
+<tr>
+      <td class="num">16</td>
+      <td class="label">클로즈 디테일 앵글</td>
+      <td>특정 부위에 바짝 붙어 디테일을 확대하는 앵글. 제품 질감·소재 강조(ProductRoe)에 유용합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="extreme close-up detail angle, camera moved in tight on a small specific area, intimate magnified texture focus" title="프롬프트만 복사"><span>extreme close-up detail angle, camera moved in tight on a small specific area, intimate magnified texture focus</span><b>복사</b></button></td>
+      <td><code>angle-closeup-detail</code></td>
+    </tr>
+<tr>
+      <td class="num">17</td>
+      <td class="label">견시점 / 로우 근접</td>
+      <td>바닥 가까이 낮게 깔아 살짝 올려보는 앵글. 웜즈아이보다 덜 극단적이고 몰입감 있는 일상 톤을 줍니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="low ground-level angle, camera placed very close to the ground looking slightly up, immersive grounded perspective" title="프롬프트만 복사"><span>low ground-level angle, camera placed very close to the ground looking slightly up, immersive grounded perspective</span><b>복사</b></button></td>
+      <td><code>angle-ground-level</code></td>
+    </tr></tbody>
+    </table></div>
+  </section>
+<section class="card" id="cat-composition">
+    <div class="section-head">
+      <div><p class="eyebrow">SHOOTING</p><h2>구도 <small>composition</small></h2></div>
+      <span class="count">19개 항목</span>
+    </div>
+    <p class="desc"><strong>어떤 화면 구도가 좋을까요?</strong> - 피사체와 배경의 배치 방식으로 화면의 균형과 시선 흐름을 정합니다.</p>
+    <div class="table-wrap"><table><colgroup><col class="col-no"><col class="col-label"><col class="col-tip"><col class="col-prompt"><col class="col-id"></colgroup>
+      <thead><tr><th>No</th><th>메뉴/버튼명</th><th>툴팁</th><th>프롬프트 복사 셀</th><th>ID</th></tr></thead>
+      <tbody><tr>
+      <td class="num">1</td>
+      <td class="label">중앙 구도</td>
+      <td>피사체를 가운데 두어 안정감 있게 보여줘요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="centered composition, subject placed dead center on a balanced symmetrical frame, stable and confident, calm formal stillness" title="프롬프트만 복사"><span>centered composition, subject placed dead center on a balanced symmetrical frame, stable and confident, calm formal stillness</span><b>복사</b></button></td>
+      <td><code>comp-center</code></td>
+    </tr>
+<tr>
+      <td class="num">2</td>
+      <td class="label">삼분할 구도</td>
+      <td>화면을 3등분해 균형과 흐름을 만들어요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="rule of thirds composition, subject aligned to a third-line intersection, horizon on a third line, balanced negative space, natural dynamic balance" title="프롬프트만 복사"><span>rule of thirds composition, subject aligned to a third-line intersection, horizon on a third line, balanced negative space, natural dynamic balance</span><b>복사</b></button></td>
+      <td><code>comp-thirds</code></td>
+    </tr>
+<tr>
+      <td class="num">3</td>
+      <td class="label">대칭 구도</td>
+      <td>좌우 균형으로 정돈된 느낌을 줘요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="symmetrical composition, perfectly mirrored left-right balance around a central axis, reflection-like harmony, orderly and architectural" title="프롬프트만 복사"><span>symmetrical composition, perfectly mirrored left-right balance around a central axis, reflection-like harmony, orderly and architectural</span><b>복사</b></button></td>
+      <td><code>comp-symmetry</code></td>
+    </tr>
+<tr>
+      <td class="num">4</td>
+      <td class="label">유도선</td>
+      <td>선의 흐름으로 시선을 피사체로 이끌어요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="leading lines composition, strong converging lines receding into depth and guiding the eye toward the subject, sense of perspective and dimension" title="프롬프트만 복사"><span>leading lines composition, strong converging lines receding into depth and guiding the eye toward the subject, sense of perspective and dimension</span><b>복사</b></button></td>
+      <td><code>comp-leading</code></td>
+    </tr>
+<tr>
+      <td class="num">5</td>
+      <td class="label">프레임 속 프레임</td>
+      <td>창이나 구조물 안에 인물을 넣어 집중시켜요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="frame within a frame composition, subject framed inside an architectural opening such as a doorway or arch, layered foreground frame, depth and concentrated focus" title="프롬프트만 복사"><span>frame within a frame composition, subject framed inside an architectural opening such as a doorway or arch, layered foreground frame, depth and concentrated focus</span><b>복사</b></button></td>
+      <td><code>comp-frame</code></td>
+    </tr>
+<tr>
+      <td class="num">6</td>
+      <td class="label">열린 창</td>
+      <td>열린 창문 프레임으로 인물을 강조해요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="open window frame within a frame composition, subject seen through an open window with soft foreground framing edges, intimate layered depth" title="프롬프트만 복사"><span>open window frame within a frame composition, subject seen through an open window with soft foreground framing edges, intimate layered depth</span><b>복사</b></button></td>
+      <td><code>comp-frame-open</code></td>
+    </tr>
+<tr>
+      <td class="num">7</td>
+      <td class="label">여백 구도</td>
+      <td>넓은 여백으로 피사체를 더 또렷하게 보여줘요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="negative space composition, small subject within vast empty space, minimalist breathing room, sense of isolation and quiet calm" title="프롬프트만 복사"><span>negative space composition, small subject within vast empty space, minimalist breathing room, sense of isolation and quiet calm</span><b>복사</b></button></td>
+      <td><code>comp-negative</code></td>
+    </tr>
+<tr>
+      <td class="num">8</td>
+      <td class="label">실루엣</td>
+      <td>역광 윤곽으로 형태와 분위기를 강조해요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="silhouette composition, subject rendered as a dark backlit shape against a bright background, glowing rim-light outline, form and mood emphasized" title="프롬프트만 복사"><span>silhouette composition, subject rendered as a dark backlit shape against a bright background, glowing rim-light outline, form and mood emphasized</span><b>복사</b></button></td>
+      <td><code>comp-silhouette</code></td>
+    </tr>
+<tr>
+      <td class="num">9</td>
+      <td class="label">뒷모습 샷</td>
+      <td>뒤에서 보는 시점으로 여운과 방향감을 줘요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="back view shot composition, subject viewed from behind facing away into the scene, contemplative narrative mood, viewer follows the subject&#39;s gaze" title="프롬프트만 복사"><span>back view shot composition, subject viewed from behind facing away into the scene, contemplative narrative mood, viewer follows the subject&#39;s gaze</span><b>복사</b></button></td>
+      <td><code>comp-back</code></td>
+    </tr>
+<tr>
+      <td class="num">10</td>
+      <td class="label">우측 배치</td>
+      <td>피사체를 우측에 두고 좌측 여백으로 시선의 길을 틈</td>
+      <td><button class="prompt-copy" type="button" data-copy="subject positioned on the right third of the frame, facing and looking toward the open space on the left, generous lead room, balanced asymmetry" title="프롬프트만 복사"><span>subject positioned on the right third of the frame, facing and looking toward the open space on the left, generous lead room, balanced asymmetry</span><b>복사</b></button></td>
+      <td><code>comp-right</code></td>
+    </tr>
+<tr>
+      <td class="num">11</td>
+      <td class="label">좌측 배치</td>
+      <td>피사체를 좌측에 두고 우측 여백으로 시선의 길을 틈</td>
+      <td><button class="prompt-copy" type="button" data-copy="subject positioned on the left third of the frame, facing and looking toward the open space on the right, generous lead room, balanced asymmetry" title="프롬프트만 복사"><span>subject positioned on the left third of the frame, facing and looking toward the open space on the right, generous lead room, balanced asymmetry</span><b>복사</b></button></td>
+      <td><code>comp-left</code></td>
+    </tr>
+<tr>
+      <td class="num">12</td>
+      <td class="label">레이어드 깊이감</td>
+      <td>전경·중경·배경 층을 나눠 입체적 깊이를 만듦</td>
+      <td><button class="prompt-copy" type="button" data-copy="layered depth composition, distinct foreground, midground and background elements, foreground framing in soft focus, strong sense of dimension and depth" title="프롬프트만 복사"><span>layered depth composition, distinct foreground, midground and background elements, foreground framing in soft focus, strong sense of dimension and depth</span><b>복사</b></button></td>
+      <td><code>comp-layered</code></td>
+    </tr>
+<tr>
+      <td class="num">13</td>
+      <td class="label">대각선 구도</td>
+      <td>대각선 흐름으로 역동성과 긴장감 부여</td>
+      <td><button class="prompt-copy" type="button" data-copy="diagonal composition, subject and lines arranged along a strong diagonal axis, dynamic energy and movement, sense of tension" title="프롬프트만 복사"><span>diagonal composition, subject and lines arranged along a strong diagonal axis, dynamic energy and movement, sense of tension</span><b>복사</b></button></td>
+      <td><code>comp-diagonal</code></td>
+    </tr>
+<tr>
+      <td class="num">14</td>
+      <td class="label">삼각형 구도</td>
+      <td>삼각형 배치로 안정적이고 조화로운 균형 (그룹·제품 집합에 강함)</td>
+      <td><button class="prompt-copy" type="button" data-copy="triangular composition, elements arranged into a stable triangle shape, grounded and harmonious balance" title="프롬프트만 복사"><span>triangular composition, elements arranged into a stable triangle shape, grounded and harmonious balance</span><b>복사</b></button></td>
+      <td><code>comp-triangle</code></td>
+    </tr>
+<tr>
+      <td class="num">15</td>
+      <td class="label">꽉 찬 구도</td>
+      <td>화면을 가득 채워 몰입감과 디테일 강조 (제품 클로즈업에 좋음)</td>
+      <td><button class="prompt-copy" type="button" data-copy="fill the frame composition, subject filling the entire frame edge to edge, intimate and immersive, rich close-up detail" title="프롬프트만 복사"><span>fill the frame composition, subject filling the entire frame edge to edge, intimate and immersive, rich close-up detail</span><b>복사</b></button></td>
+      <td><code>comp-fill</code></td>
+    </tr>
+<tr>
+      <td class="num">16</td>
+      <td class="label">S자 곡선</td>
+      <td>S자 곡선으로 우아하고 리듬감 있는 시선 흐름</td>
+      <td><button class="prompt-copy" type="button" data-copy="S-curve composition, a graceful flowing S-shaped curve leading the eye through the frame, elegant and rhythmic" title="프롬프트만 복사"><span>S-curve composition, a graceful flowing S-shaped curve leading the eye through the frame, elegant and rhythmic</span><b>복사</b></button></td>
+      <td><code>comp-scurve</code></td>
+    </tr>
+<tr>
+      <td class="num">17</td>
+      <td class="label">더치 앵글</td>
+      <td>의도적으로 기울인 수평선으로 긴장감·에지있는 무드</td>
+      <td><button class="prompt-copy" type="button" data-copy="dutch angle composition, intentionally tilted horizon line, off-kilter dynamic tension, edgy unsettled mood" title="프롬프트만 복사"><span>dutch angle composition, intentionally tilted horizon line, off-kilter dynamic tension, edgy unsettled mood</span><b>복사</b></button></td>
+      <td><code>comp-dutch</code></td>
+    </tr>
+<tr>
+      <td class="num">18</td>
+      <td class="label">오버 더 숄더</td>
+      <td>어깨 너머 시점으로 서사적 시점과 깊이 표현</td>
+      <td><button class="prompt-copy" type="button" data-copy="over-the-shoulder composition, viewed past a foreground subject&#39;s shoulder toward the main subject, narrative point-of-view depth" title="프롬프트만 복사"><span>over-the-shoulder composition, viewed past a foreground subject&#39;s shoulder toward the main subject, narrative point-of-view depth</span><b>복사</b></button></td>
+      <td><code>comp-ots</code></td>
+    </tr>
+<tr>
+      <td class="num">19</td>
+      <td class="label">황금나선</td>
+      <td>황금나선을 따라 배치해 자연스러운 시선 흐름 유도</td>
+      <td><button class="prompt-copy" type="button" data-copy="golden spiral composition, key elements arranged along a Fibonacci spiral, naturally pleasing flow toward the focal point" title="프롬프트만 복사"><span>golden spiral composition, key elements arranged along a Fibonacci spiral, naturally pleasing flow toward the focal point</span><b>복사</b></button></td>
+      <td><code>comp-golden-spiral</code></td>
+    </tr></tbody>
+    </table></div>
+  </section>
+<section class="card" id="cat-lens">
+    <div class="section-head">
+      <div><p class="eyebrow">SHOOTING</p><h2>렌즈 <small>lens</small></h2></div>
+      <span class="count">7개 항목</span>
+    </div>
+    <p class="desc"><strong>어떤 렌즈 느낌일까요?</strong> - 화각과 심도가 분위기를 좌우합니다.</p>
+    <div class="table-wrap"><table><colgroup><col class="col-no"><col class="col-label"><col class="col-tip"><col class="col-prompt"><col class="col-id"></colgroup>
+      <thead><tr><th>No</th><th>메뉴/버튼명</th><th>툴팁</th><th>프롬프트 복사 셀</th><th>ID</th></tr></thead>
+      <tbody><tr>
+      <td class="num">1</td>
+      <td class="label">24mm (광각)</td>
+      <td>넓은 배경과 공간감을 크게 담아요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="24mm wide-angle lens" title="프롬프트만 복사"><span>24mm wide-angle lens</span><b>복사</b></button></td>
+      <td><code>l24</code></td>
+    </tr>
+<tr>
+      <td class="num">2</td>
+      <td class="label">35mm (표준 광각)</td>
+      <td>인물과 배경을 자연스럽게 함께 보여줘요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="35mm standard wide lens" title="프롬프트만 복사"><span>35mm standard wide lens</span><b>복사</b></button></td>
+      <td><code>l35</code></td>
+    </tr>
+<tr>
+      <td class="num">3</td>
+      <td class="label">50mm (표준)</td>
+      <td>실제 시선과 비슷한 자연스러운 느낌을 줘요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="50mm standard lens" title="프롬프트만 복사"><span>50mm standard lens</span><b>복사</b></button></td>
+      <td><code>l50</code></td>
+    </tr>
+<tr>
+      <td class="num">4</td>
+      <td class="label">70mm (인물)</td>
+      <td>인물 중심으로 안정감 있게 담기 좋아요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="70mm portrait lens" title="프롬프트만 복사"><span>70mm portrait lens</span><b>복사</b></button></td>
+      <td><code>l70</code></td>
+    </tr>
+<tr>
+      <td class="num">5</td>
+      <td class="label">85mm (인물)</td>
+      <td>배경을 부드럽게 흐리며 인물을 돋보이게 해요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="85mm portrait lens, shallow depth of field" title="프롬프트만 복사"><span>85mm portrait lens, shallow depth of field</span><b>복사</b></button></td>
+      <td><code>l85</code></td>
+    </tr>
+<tr>
+      <td class="num">6</td>
+      <td class="label">135mm (망원)</td>
+      <td>멀리서 압축감 있게 담아 배경을 더 깊게 보여줘요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="135mm telephoto lens, compressed perspective" title="프롬프트만 복사"><span>135mm telephoto lens, compressed perspective</span><b>복사</b></button></td>
+      <td><code>l135</code></td>
+    </tr>
+<tr>
+      <td class="num">7</td>
+      <td class="label">마이크로 (접사)</td>
+      <td>아주 가까운 디테일과 질감을 선명하게 보여줘요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="macro lens, extreme close-up detail" title="프롬프트만 복사"><span>macro lens, extreme close-up detail</span><b>복사</b></button></td>
+      <td><code>macro</code></td>
+    </tr></tbody>
+    </table></div>
+  </section>
+<section class="card" id="cat-light">
+    <div class="section-head">
+      <div><p class="eyebrow">LIGHTING</p><h2>라이팅 <small>light</small></h2></div>
+      <span class="count">8개 항목</span>
+    </div>
+    <p class="desc"><strong>어떤 조명일까요?</strong> - 조명은 사진의 분위기와 감정을 만듭니다.</p>
+    <div class="table-wrap"><table><colgroup><col class="col-no"><col class="col-label"><col class="col-tip"><col class="col-prompt"><col class="col-id"></colgroup>
+      <thead><tr><th>No</th><th>메뉴/버튼명</th><th>툴팁</th><th>프롬프트 복사 셀</th><th>ID</th></tr></thead>
+      <tbody><tr>
+      <td class="num">1</td>
+      <td class="label">자연광</td>
+      <td>햇빛처럼 자연스럽고 부드러운 분위기를 만들어요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="natural light" title="프롬프트만 복사"><span>natural light</span><b>복사</b></button></td>
+      <td><code>natural</code></td>
+    </tr>
+<tr>
+      <td class="num">2</td>
+      <td class="label">소프트 라이트</td>
+      <td>그림자를 줄여 깨끗하고 편안한 인상을 줘요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="soft light" title="프롬프트만 복사"><span>soft light</span><b>복사</b></button></td>
+      <td><code>soft</code></td>
+    </tr>
+<tr>
+      <td class="num">3</td>
+      <td class="label">시네마틱 라이팅</td>
+      <td>영화처럼 명암이 깊고 분위기 있게 보여줘요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="cinematic lighting" title="프롬프트만 복사"><span>cinematic lighting</span><b>복사</b></button></td>
+      <td><code>cinematic</code></td>
+    </tr>
+<tr>
+      <td class="num">4</td>
+      <td class="label">림 라이트 / 백라이트</td>
+      <td>뒤쪽 빛으로 인물의 윤곽을 강조해요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="rim light, backlight" title="프롬프트만 복사"><span>rim light, backlight</span><b>복사</b></button></td>
+      <td><code>rim</code></td>
+    </tr>
+<tr>
+      <td class="num">5</td>
+      <td class="label">로우키 라이팅</td>
+      <td>어두운 그림자로 강렬하고 드라마틱하게 보여줘요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="low-key lighting" title="프롬프트만 복사"><span>low-key lighting</span><b>복사</b></button></td>
+      <td><code>lowkey</code></td>
+    </tr>
+<tr>
+      <td class="num">6</td>
+      <td class="label">스튜디오 라이팅</td>
+      <td>조명을 정돈해 깔끔하고 전문적인 느낌을 줘요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="studio lighting" title="프롬프트만 복사"><span>studio lighting</span><b>복사</b></button></td>
+      <td><code>studio</code></td>
+    </tr>
+<tr>
+      <td class="num">7</td>
+      <td class="label">필 라이트</td>
+      <td>어두운 부분을 부드럽게 밝혀 균형을 맞춰요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="fill light" title="프롬프트만 복사"><span>fill light</span><b>복사</b></button></td>
+      <td><code>fill</code></td>
+    </tr>
+<tr>
+      <td class="num">8</td>
+      <td class="label">볼륨 라이트</td>
+      <td>빛줄기와 공기감을 살려 몽환적인 분위기를 만들어요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="volumetric light" title="프롬프트만 복사"><span>volumetric light</span><b>복사</b></button></td>
+      <td><code>volumetric</code></td>
+    </tr></tbody>
+    </table></div>
+  </section>
+<section class="card" id="cat-naturalLight">
+    <div class="section-head">
+      <div><p class="eyebrow">LIGHTING</p><h2>자연광 <small>naturalLight</small></h2></div>
+      <span class="count">7개 항목</span>
+    </div>
+    <p class="desc"><strong>어떤 자연광을 쓸까요?</strong> - 시간대와 날씨, 창문과 나뭇잎을 통과한 빛의 성격을 고릅니다.</p>
+    <div class="table-wrap"><table><colgroup><col class="col-no"><col class="col-label"><col class="col-tip"><col class="col-prompt"><col class="col-id"></colgroup>
+      <thead><tr><th>No</th><th>메뉴/버튼명</th><th>툴팁</th><th>프롬프트 복사 셀</th><th>ID</th></tr></thead>
+      <tbody><tr>
+      <td class="num">1</td>
+      <td class="label">골든아워</td>
+      <td>일출·일몰 직전의 따뜻하고 로맨틱한 황금빛과 주황색 톤을 연출합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="warm golden hour light, amber glow, soft orange setting sun illumination" title="프롬프트만 복사"><span>warm golden hour light, amber glow, soft orange setting sun illumination</span><b>복사</b></button></td>
+      <td><code>nl-golden-hour</code></td>
+    </tr>
+<tr>
+      <td class="num">2</td>
+      <td class="label">블루아워</td>
+      <td>해질녘 직후의 차분하고 푸른빛이 감도는 몽환적이고 정적인 무드를 만듭니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="blue hour lighting, twilight ambiance, deep blue and purple hues, serene moody light" title="프롬프트만 복사"><span>blue hour lighting, twilight ambiance, deep blue and purple hues, serene moody light</span><b>복사</b></button></td>
+      <td><code>nl-blue-hour</code></td>
+    </tr>
+<tr>
+      <td class="num">3</td>
+      <td class="label">정오직사광</td>
+      <td>한낮의 강렬한 햇빛으로 대비가 강하고 깊고 선명한 그림자를 표현합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="harsh midday sun, direct sharp sunlight, intense hard shadows, high contrast illumination" title="프롬프트만 복사"><span>harsh midday sun, direct sharp sunlight, intense hard shadows, high contrast illumination</span><b>복사</b></button></td>
+      <td><code>nl-midday</code></td>
+    </tr>
+<tr>
+      <td class="num">4</td>
+      <td class="label">흐린날확산광</td>
+      <td>구름에 가려진 부드러운 빛으로 그림자 없이 차분하고 은은한 분위기를 만듭니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="soft overcast daylight, diffused cloud light, shadowless photography, soft atmosphere" title="프롬프트만 복사"><span>soft overcast daylight, diffused cloud light, shadowless photography, soft atmosphere</span><b>복사</b></button></td>
+      <td><code>nl-overcast</code></td>
+    </tr>
+<tr>
+      <td class="num">5</td>
+      <td class="label">창문측면광</td>
+      <td>창문으로 들어오는 빛을 이용해 인물의 입체감과 드라마틱한 분위기를 극대화합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="soft window light, cinematic side lighting, indoor natural light, dramatic shadow and light contrast" title="프롬프트만 복사"><span>soft window light, cinematic side lighting, indoor natural light, dramatic shadow and light contrast</span><b>복사</b></button></td>
+      <td><code>nl-window-side</code></td>
+    </tr>
+<tr>
+      <td class="num">6</td>
+      <td class="label">나뭇잎사이빛</td>
+      <td>숲속 나뭇잎 사이로 햇살이 통과하며 생기는 싱그럽고 얼룩덜룩한 빛 패턴을 만듭니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="dappled sunlight, sun rays filtering through foliage, beautiful leaf shadow patterns, organic light" title="프롬프트만 복사"><span>dappled sunlight, sun rays filtering through foliage, beautiful leaf shadow patterns, organic light</span><b>복사</b></button></td>
+      <td><code>nl-dappled</code></td>
+    </tr>
+<tr>
+      <td class="num">7</td>
+      <td class="label">새벽창가</td>
+      <td>새벽 창가의 옅고 차가운 빛으로 조용하고 투명한 아침 분위기를 만듭니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="soft dawn window light, pale blue morning glow, quiet early morning indoor natural light" title="프롬프트만 복사"><span>soft dawn window light, pale blue morning glow, quiet early morning indoor natural light</span><b>복사</b></button></td>
+      <td><code>nl-dawn-window</code></td>
+    </tr></tbody>
+    </table></div>
+  </section>
+<section class="card" id="cat-bg">
+    <div class="section-head">
+      <div><p class="eyebrow">BACKGROUND</p><h2>배경 <small>bg</small></h2></div>
+      <span class="count">20개 항목</span>
+    </div>
+    <p class="desc"><strong>어떤 배경을 사용할까요?</strong> - 배경의 종류를 고르면 장면의 공간감과 연출 무드가 정리됩니다.</p>
+    <div class="table-wrap"><table><colgroup><col class="col-no"><col class="col-label"><col class="col-tip"><col class="col-prompt"><col class="col-id"></colgroup>
+      <thead><tr><th>No</th><th>메뉴/버튼명</th><th>툴팁</th><th>프롬프트 복사 셀</th><th>ID</th></tr></thead>
+      <tbody><tr class="section-row"><td colspan="5">스튜디오</td></tr>
+<tr>
+      <td class="num">1</td>
+      <td class="label">미니멀 갤러리</td>
+      <td>깔끔한 전시 공간처럼 차분하고 세련되게 보여줘요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="in an empty gallery space" title="프롬프트만 복사"><span>in an empty gallery space</span><b>복사</b></button></td>
+      <td><code>studio-gallery</code></td>
+    </tr>
+<tr>
+      <td class="num">2</td>
+      <td class="label">아치형 창가 스튜디오</td>
+      <td>창가의 빛과 구조감으로 우아한 분위기를 만들어요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="standing next to a large vintage arched window with a white grid frame, bright and soft natural light pouring into a minimalist white-walled studio, clean light grey concrete floor with soft shadow gradations" title="프롬프트만 복사"><span>standing next to a large vintage arched window with a white grid frame, bright and soft natural light pouring into a minimalist white-walled studio, clean light grey concrete floor with soft shadow gradations</span><b>복사</b></button></td>
+      <td><code>studio-window</code></td>
+    </tr>
+<tr>
+      <td class="num">3</td>
+      <td class="label">고대비 노출 콘크리트</td>
+      <td>거친 벽과 강한 그림자로 감각적인 분위기를 줘요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="standing in front of a minimalist white raw concrete wall with visible textures, under harsh and bright direct sunlight, a sharp and dark diagonal shadow cast on the left, a sliver of clear blue sky visible at the top, high contrast, crisp shadows" title="프롬프트만 복사"><span>standing in front of a minimalist white raw concrete wall with visible textures, under harsh and bright direct sunlight, a sharp and dark diagonal shadow cast on the left, a sliver of clear blue sky visible at the top, high contrast, crisp shadows</span><b>복사</b></button></td>
+      <td><code>studio-concrete</code></td>
+    </tr>
+<tr>
+      <td class="num">4</td>
+      <td class="label">따뜻한 톤의 룩북 스튜디오</td>
+      <td>부드러운 색감으로 패션 화보처럼 보여줘요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="standing in a minimalist professional photo studio, solid neutral warm-grey backdrop, clean seamless background, illuminated by softbox lighting, ultra-soft diffused shadows on the floor, high-end lookbook mood" title="프롬프트만 복사"><span>standing in a minimalist professional photo studio, solid neutral warm-grey backdrop, clean seamless background, illuminated by softbox lighting, ultra-soft diffused shadows on the floor, high-end lookbook mood</span><b>복사</b></button></td>
+      <td><code>studio-warm</code></td>
+    </tr>
+<tr>
+      <td class="num">5</td>
+      <td class="label">조명 장비가 노출된 화이트 스튜디오</td>
+      <td>Professional Studio Setup with Softbox Wings</td>
+      <td><button class="prompt-copy" type="button" data-copy="standing in a high-end fashion photography studio, seamless all-white cyclorama wall background, professional studio lighting setup with large vertical softboxes visible on the left and right edges of the frame, symmetrical lighting, bright and clean white studio floor, no harsh shadows" title="프롬프트만 복사"><span>standing in a high-end fashion photography studio, seamless all-white cyclorama wall background, professional studio lighting setup with large vertical softboxes visible on the left and right edges of the frame, symmetrical lighting, bright and clean white studio floor, no harsh shadows</span><b>복사</b></button></td>
+      <td><code>studio-softbox</code></td>
+    </tr>
+<tr>
+      <td class="num">6</td>
+      <td class="label">부드러운 아이보리 톤의 호리존</td>
+      <td>Soft Ivory Bright Cyclorama</td>
+      <td><button class="prompt-copy" type="button" data-copy="standing in a minimalist photography studio, seamless warm ivory cyclorama background, clean off-white backdrop with no visible seams, evenly diffused soft lighting, very subtle and soft faint shadow on the floor around the feet, bright and natural atmosphere" title="프롬프트만 복사"><span>standing in a minimalist photography studio, seamless warm ivory cyclorama background, clean off-white backdrop with no visible seams, evenly diffused soft lighting, very subtle and soft faint shadow on the floor around the feet, bright and natural atmosphere</span><b>복사</b></button></td>
+      <td><code>studio-ivory</code></td>
+    </tr>
+<tr>
+      <td class="num">7</td>
+      <td class="label">자연광 그림자가 드리운 화이트 스튜디오</td>
+      <td>Sunlight Streaks on White Infinity Wall</td>
+      <td><button class="prompt-copy" type="button" data-copy="sitting on the floor of a clean white seamless photography studio, bright natural sunlight casting distinct parallel streaks of light and shadow across the floor, soft warm sunlight filtering into the studio, minimalist and warm editorial mood, rich depth created by light play" title="프롬프트만 복사"><span>sitting on the floor of a clean white seamless photography studio, bright natural sunlight casting distinct parallel streaks of light and shadow across the floor, soft warm sunlight filtering into the studio, minimalist and warm editorial mood, rich depth created by light play</span><b>복사</b></button></td>
+      <td><code>studio-sunstreak</code></td>
+    </tr>
+<tr class="section-row"><td colspan="5">야외</td></tr>
+<tr>
+      <td class="num">8</td>
+      <td class="label">비누방울 공원</td>
+      <td>Whimsical Bubble Park</td>
+      <td><button class="prompt-copy" type="button" data-copy="in a lush green park with a spacious lawn and vibrant trees, several large iridescent soap bubbles with rainbow reflections floating around the space, illuminated by soft overcast daylight, dreamy shallow depth of field, gentle slice-of-life mood, nostalgic and whimsical atmosphere" title="프롬프트만 복사"><span>in a lush green park with a spacious lawn and vibrant trees, several large iridescent soap bubbles with rainbow reflections floating around the space, illuminated by soft overcast daylight, dreamy shallow depth of field, gentle slice-of-life mood, nostalgic and whimsical atmosphere</span><b>복사</b></button></td>
+      <td><code>outdoor-bubblepark</code></td>
+    </tr>
+<tr>
+      <td class="num">9</td>
+      <td class="label">능소화 여름 정원 벽</td>
+      <td>Dappled Summer Trumpet Vine Wall</td>
+      <td><button class="prompt-copy" type="button" data-copy="against a rustic vine-covered garden wall densely filled with vivid orange trumpet creeper flowers (Campsis grandiflora) and lush green vines, hanging orange trumpet-shaped blossoms framing the scene, bathed in warm afternoon sunlight with beautiful dappled shadows, shallow depth of field, candid joyful summer mood" title="프롬프트만 복사"><span>against a rustic vine-covered garden wall densely filled with vivid orange trumpet creeper flowers (Campsis grandiflora) and lush green vines, hanging orange trumpet-shaped blossoms framing the scene, bathed in warm afternoon sunlight with beautiful dappled shadows, shallow depth of field, candid joyful summer mood</span><b>복사</b></button></td>
+      <td><code>outdoor-trumpet</code></td>
+    </tr>
+<tr>
+      <td class="num">10</td>
+      <td class="label">일본 필름 옥상</td>
+      <td>Faded Japanese Film Rooftop</td>
+      <td><button class="prompt-copy" type="button" data-copy="on a minimalist rooftop edge area during summer, against an open empty sky with minimal elements, soft natural sunlight with slight overexposure highlights, low contrast with muted faded colors, subtle film grain, quiet isolated mood, nostalgic and reflective Japanese negative film aesthetic with a memory-like realism" title="프롬프트만 복사"><span>on a minimalist rooftop edge area during summer, against an open empty sky with minimal elements, soft natural sunlight with slight overexposure highlights, low contrast with muted faded colors, subtle film grain, quiet isolated mood, nostalgic and reflective Japanese negative film aesthetic with a memory-like realism</span><b>복사</b></button></td>
+      <td><code>outdoor-rooftop</code></td>
+    </tr>
+<tr>
+      <td class="num">11</td>
+      <td class="label">황금빛 피크닉 들판</td>
+      <td>Golden-Hour Picnic Meadow</td>
+      <td><button class="prompt-copy" type="button" data-copy="in an open grassy field and sun-drenched picnic meadow, bathed in warm golden-hour backlight creating a soft halo effect, slightly overexposed golden highlights, rich film grain texture, carefree and nostalgic summer vacation mood" title="프롬프트만 복사"><span>in an open grassy field and sun-drenched picnic meadow, bathed in warm golden-hour backlight creating a soft halo effect, slightly overexposed golden highlights, rich film grain texture, carefree and nostalgic summer vacation mood</span><b>복사</b></button></td>
+      <td><code>outdoor-picnic</code></td>
+    </tr>
+<tr>
+      <td class="num">12</td>
+      <td class="label">강렬한 하늘 렌즈 플레어</td>
+      <td>Low-Angle Bright Midday Sky &amp; Flare</td>
+      <td><button class="prompt-copy" type="button" data-copy="looking up from a ground perspective into a vast clear blue sky, illuminated by bright midday sun creating a strong artistic lens flare and glowing backlit effects, cinematic lighting, shallow depth of field, 35mm fisheye wide-angle look, vibrant colors, high-end fashion editorial style" title="프롬프트만 복사"><span>looking up from a ground perspective into a vast clear blue sky, illuminated by bright midday sun creating a strong artistic lens flare and glowing backlit effects, cinematic lighting, shallow depth of field, 35mm fisheye wide-angle look, vibrant colors, high-end fashion editorial style</span><b>복사</b></button></td>
+      <td><code>outdoor-skyflare</code></td>
+    </tr>
+<tr>
+      <td class="num">13</td>
+      <td class="label">편의점앞</td>
+      <td>비 오는 밤 편의점 외관을 배경으로, 유리문 너머 흐릿하게 비치는 내부 풍경과 젖은 보도를 연출합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="outside a small convenience store at night, glowing storefront lights, street snap mood, realistic urban background" title="프롬프트만 복사"><span>outside a small convenience store at night, glowing storefront lights, street snap mood, realistic urban background</span><b>복사</b></button></td>
+      <td><code>outdoor-convenience</code></td>
+    </tr>
+<tr>
+      <td class="num">14</td>
+      <td class="label">유리반사</td>
+      <td>빗물에 젖은 바닥과 유리창에 청록색·코랄색 네온 불빛이 은은하게 반사되는 고독한 야간 공간을 만듭니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="beside reflective glass windows, layered city reflections, natural candid composition, modern street background" title="프롬프트만 복사"><span>beside reflective glass windows, layered city reflections, natural candid composition, modern street background</span><b>복사</b></button></td>
+      <td><code>outdoor-glass-reflection</code></td>
+    </tr>
+<tr>
+      <td class="num">15</td>
+      <td class="label">모래언덕</td>
+      <td>Soft Sand Dune</td>
+      <td><button class="prompt-copy" type="button" data-copy="on soft sand dunes, open desert-like landscape, warm natural light, minimal outdoor background" title="프롬프트만 복사"><span>on soft sand dunes, open desert-like landscape, warm natural light, minimal outdoor background</span><b>복사</b></button></td>
+      <td><code>outdoor-sand-dune</code></td>
+    </tr>
+<tr>
+      <td class="num">16</td>
+      <td class="label">숲속작업</td>
+      <td>Forest Work Scene</td>
+      <td><button class="prompt-copy" type="button" data-copy="in a quiet forest work setting, natural green surroundings, documentary outdoor mood, grounded realistic atmosphere" title="프롬프트만 복사"><span>in a quiet forest work setting, natural green surroundings, documentary outdoor mood, grounded realistic atmosphere</span><b>복사</b></button></td>
+      <td><code>outdoor-forest-work</code></td>
+    </tr>
+<tr>
+      <td class="num">17</td>
+      <td class="label">시골들판</td>
+      <td>Rural Country Field</td>
+      <td><button class="prompt-copy" type="button" data-copy="in a rural open field, soft countryside daylight, calm pastoral atmosphere, realistic outdoor background" title="프롬프트만 복사"><span>in a rural open field, soft countryside daylight, calm pastoral atmosphere, realistic outdoor background</span><b>복사</b></button></td>
+      <td><code>outdoor-country-field</code></td>
+    </tr>
+<tr class="section-row"><td colspan="5">풍경</td></tr>
+<tr>
+      <td class="num">18</td>
+      <td class="label">웅장한 풍경 사진</td>
+      <td>넓은 하늘과 깊은 공간감 속에 담은 웅장한 풍경 사진</td>
+      <td><button class="prompt-copy" type="button" data-copy="an epic landscape photograph, with a vast sky and deep spatial depth" title="프롬프트만 복사"><span>an epic landscape photograph, with a vast sky and deep spatial depth</span><b>복사</b></button></td>
+      <td><code>land-epic</code></td>
+    </tr>
+<tr>
+      <td class="num">19</td>
+      <td class="label">골든아워</td>
+      <td>골든아워의 부드러운 빛으로 물든 감성적인 야외 풍경</td>
+      <td><button class="prompt-copy" type="button" data-copy="an atmospheric outdoor landscape, bathed in soft golden hour light" title="프롬프트만 복사"><span>an atmospheric outdoor landscape, bathed in soft golden hour light</span><b>복사</b></button></td>
+      <td><code>land-golden</code></td>
+    </tr>
+<tr>
+      <td class="num">20</td>
+      <td class="label">미니멀한 풍경 사진</td>
+      <td>여백과 고요함을 강조한 미니멀한 풍경 사진</td>
+      <td><button class="prompt-copy" type="button" data-copy="a minimal landscape photograph, emphasizing negative space and silence" title="프롬프트만 복사"><span>a minimal landscape photograph, emphasizing negative space and silence</span><b>복사</b></button></td>
+      <td><code>land-minimal</code></td>
+    </tr>
+</tbody>
+    </table></div>
+  </section>
+<section class="card" id="cat-bgProduct">
+    <div class="section-head">
+      <div><p class="eyebrow">BACKGROUND</p><h2>배경 <small>bgProduct</small></h2></div>
+      <span class="count">25개 항목</span>
+    </div>
+    <p class="desc"><strong>어떤 배경을 사용할까요?</strong> - 배경의 종류를 고르면 장면의 공간감과 연출 무드가 정리됩니다.</p>
+    <div class="table-wrap"><table><colgroup><col class="col-no"><col class="col-label"><col class="col-tip"><col class="col-prompt"><col class="col-id"></colgroup>
+      <thead><tr><th>No</th><th>메뉴/버튼명</th><th>툴팁</th><th>프롬프트 복사 셀</th><th>ID</th></tr></thead>
+      <tbody><tr class="section-row"><td colspan="5">광고</td></tr>
+<tr>
+      <td class="num">1</td>
+      <td class="label">역광의 솜사탕 구름</td>
+      <td>Backlit Cotton Candy Clouds</td>
+      <td><button class="prompt-copy" type="button" data-copy="against a vivid clean blue sky filled with soft cotton-candy-like clouds, dramatic backlighting glowing through the cloud edges, airy luminous atmosphere, premium surreal commercial product advertising style, elegant dimensional depth, refined high-end freshness, no visible pedestal, no tabletop, no glass panel, no acrylic plate, no hard platform edge, photorealistic luxury finish" title="프롬프트만 복사"><span>against a vivid clean blue sky filled with soft cotton-candy-like clouds, dramatic backlighting glowing through the cloud edges, airy luminous atmosphere, premium surreal commercial product advertising style, elegant dimensional depth, refined high-end freshness, no visible pedestal, no tabletop, no glass panel, no acrylic plate, no hard platform edge, photorealistic luxury finish</span><b>복사</b></button></td>
+      <td><code>product-clouds</code></td>
+    </tr>
+<tr>
+      <td class="num">2</td>
+      <td class="label">에메랄드 비치 대리석 난간</td>
+      <td>Emerald Beach Marble Ledge</td>
+      <td><button class="prompt-copy" type="button" data-copy="placed directly on an elegant integrated marble ledge overlooking an emerald sea and white sand beach, the marble ledge feels architectural and naturally part of the scene, not a separate display board, top-down three-quarter composition, refined tilt-shift depth, shallow depth of field, sunlit coastal luxury mood, crisp material texture, polished commercial advertising photography, no extra glass sheet, no acrylic panel, no unrelated platform, photorealistic premium finish" title="프롬프트만 복사"><span>placed directly on an elegant integrated marble ledge overlooking an emerald sea and white sand beach, the marble ledge feels architectural and naturally part of the scene, not a separate display board, top-down three-quarter composition, refined tilt-shift depth, shallow depth of field, sunlit coastal luxury mood, crisp material texture, polished commercial advertising photography, no extra glass sheet, no acrylic panel, no unrelated platform, photorealistic premium finish</span><b>복사</b></button></td>
+      <td><code>product-marble</code></td>
+    </tr>
+<tr>
+      <td class="num">3</td>
+      <td class="label">물방울과 얼음이 떠오르는 청량한 배경</td>
+      <td>Floating Ice &amp; Macro Nature</td>
+      <td><button class="prompt-copy" type="button" data-copy="an ultra-high-resolution macro commercial product scene with floating hops, crystalline ice cubes, and cool condensation suspended naturally around the subject, diagonal dynamic composition, crisp natural light, vibrant blue-toned freshness, premium beverage-advertising energy, sharp clean highlights, luxurious cooling atmosphere, no tabletop edge, no glass slab, no acrylic display plate, no random platform, photorealistic high-end finish" title="프롬프트만 복사"><span>an ultra-high-resolution macro commercial product scene with floating hops, crystalline ice cubes, and cool condensation suspended naturally around the subject, diagonal dynamic composition, crisp natural light, vibrant blue-toned freshness, premium beverage-advertising energy, sharp clean highlights, luxurious cooling atmosphere, no tabletop edge, no glass slab, no acrylic display plate, no random platform, photorealistic high-end finish</span><b>복사</b></button></td>
+      <td><code>product-ice</code></td>
+    </tr>
+<tr>
+      <td class="num">4</td>
+      <td class="label">빛의 줄기가 있는 태양광 해변</td>
+      <td>Sunny Sand Beach with Light Streaks</td>
+      <td><button class="prompt-copy" type="button" data-copy="placed directly on fine sunlit beach sand under harsh bright direct sunlight, vibrant light streaks in the background suggesting sea, sky, and wind, crisp natural reflections, sharp material texture, lively refreshing summer commercial mood, high-end outdoor product advertising style, no artificial glass plate, no acrylic panel, no studio tabletop edge, no unrelated platform, 8K photorealistic luxury finish" title="프롬프트만 복사"><span>placed directly on fine sunlit beach sand under harsh bright direct sunlight, vibrant light streaks in the background suggesting sea, sky, and wind, crisp natural reflections, sharp material texture, lively refreshing summer commercial mood, high-end outdoor product advertising style, no artificial glass plate, no acrylic panel, no studio tabletop edge, no unrelated platform, 8K photorealistic luxury finish</span><b>복사</b></button></td>
+      <td><code>product-beach</code></td>
+    </tr>
+<tr>
+      <td class="num">5</td>
+      <td class="label">스포트라이트가 있는 스튜디오 손 연출</td>
+      <td>Editorial Spotlight Studio with Hand Grip</td>
+      <td><button class="prompt-copy" type="button" data-copy="a sophisticated editorial studio product shot with a neatly manicured adult hand holding the product naturally, low-angle close-up, dramatic spotlight, soft diffused rim lighting, seamless muted grey gradient backdrop, refined fashion-magazine luxury mood, premium commercial finish, no tabletop, no glass shelf, no acrylic plate, no extra display stand unless held by the hand, photorealistic" title="프롬프트만 복사"><span>a sophisticated editorial studio product shot with a neatly manicured adult hand holding the product naturally, low-angle close-up, dramatic spotlight, soft diffused rim lighting, seamless muted grey gradient backdrop, refined fashion-magazine luxury mood, premium commercial finish, no tabletop, no glass shelf, no acrylic plate, no extra display stand unless held by the hand, photorealistic</span><b>복사</b></button></td>
+      <td><code>product-spotlight</code></td>
+    </tr>
+<tr>
+      <td class="num">6</td>
+      <td class="label">분홍 작약과 룩북이 있는 미니멀 로우키 배경</td>
+      <td>Luxury Low-key Peony &amp; Book Decor</td>
+      <td><button class="prompt-copy" type="button" data-copy="a minimalist luxury commercial product shot on a LOOKBOOK magazine integrated naturally into the styling, solid black background with dramatic low-key lighting, slightly blurred ivory vase with pink peonies and white daisies in the background, elegant chrome accents, refined editorial still-life mood, controlled highlights, rich shadow depth, shot with a 100mm macro lens, high-resolution 3:4 aspect ratio, no glass slab, no acrylic panel, no unrelated platform, photorealistic premium finish" title="프롬프트만 복사"><span>a minimalist luxury commercial product shot on a LOOKBOOK magazine integrated naturally into the styling, solid black background with dramatic low-key lighting, slightly blurred ivory vase with pink peonies and white daisies in the background, elegant chrome accents, refined editorial still-life mood, controlled highlights, rich shadow depth, shot with a 100mm macro lens, high-resolution 3:4 aspect ratio, no glass slab, no acrylic panel, no unrelated platform, photorealistic premium finish</span><b>복사</b></button></td>
+      <td><code>product-peony</code></td>
+    </tr>
+<tr class="section-row"><td colspan="5">뷰티</td></tr>
+<tr>
+      <td class="num">7</td>
+      <td class="label">물방울 플랫레이</td>
+      <td>Dewy Pastel Pink &amp; Floral Flat-Lay</td>
+      <td><button class="prompt-copy" type="button" data-copy="placed directly at the center of a vibrant pastel-pink surface covered with fresh water droplets, moisture beads sparkling across the background for a clean dewy skincare feel, surrounded organically by delicate flowers including purple blossoms, pale lilies, yellow sprigs, and green leaves arranged diagonally around the subject, balanced flat-lay composition, soft diffused studio lighting from above, gentle highlights, natural shadows, premium beauty editorial style, no glass sheet, no acrylic plate, no tabletop edge, photorealistic luxury finish" title="프롬프트만 복사"><span>placed directly at the center of a vibrant pastel-pink surface covered with fresh water droplets, moisture beads sparkling across the background for a clean dewy skincare feel, surrounded organically by delicate flowers including purple blossoms, pale lilies, yellow sprigs, and green leaves arranged diagonally around the subject, balanced flat-lay composition, soft diffused studio lighting from above, gentle highlights, natural shadows, premium beauty editorial style, no glass sheet, no acrylic plate, no tabletop edge, photorealistic luxury finish</span><b>복사</b></button></td>
+      <td><code>beauty-dewy</code></td>
+    </tr>
+<tr>
+      <td class="num">8</td>
+      <td class="label">시네마틱 사막 유목</td>
+      <td>Cinematic Amber Desert &amp; Driftwood</td>
+      <td><button class="prompt-copy" type="button" data-copy="perched naturally on a curved piece of textured driftwood that belongs to the scene, framed by creamy white tropical flowers in full bloom and a single unopened bud arranged with sculptural balance, slender vanilla pods resting in the foreground, warm desert-toned studio environment, sweeping shadow patterns across a soft sand-colored backdrop, high-contrast cinematic lighting from the left, deep shadow falloff, sharp rim lighting, rich golden amber, caramel, ivory, and earthy brown palette, shallow depth of field, creamy bokeh, no glass panel, no acrylic display plate, no unrelated platform, photorealistic high-end beauty campaign finish" title="프롬프트만 복사"><span>perched naturally on a curved piece of textured driftwood that belongs to the scene, framed by creamy white tropical flowers in full bloom and a single unopened bud arranged with sculptural balance, slender vanilla pods resting in the foreground, warm desert-toned studio environment, sweeping shadow patterns across a soft sand-colored backdrop, high-contrast cinematic lighting from the left, deep shadow falloff, sharp rim lighting, rich golden amber, caramel, ivory, and earthy brown palette, shallow depth of field, creamy bokeh, no glass panel, no acrylic display plate, no unrelated platform, photorealistic high-end beauty campaign finish</span><b>복사</b></button></td>
+      <td><code>beauty-amber</code></td>
+    </tr>
+<tr>
+      <td class="num">9</td>
+      <td class="label">미니멀 건축 도면</td>
+      <td>Minimal Architectural Interior &amp; Technical Layout</td>
+      <td><button class="prompt-copy" type="button" data-copy="placed directly within a minimal architectural interior, on a continuous textured plaster or stone floor surface with a warm neutral paper-like backdrop, natural sunlight entering from an angled side direction to create soft high-contrast shadows, premium muted color grading, refined design catalog aesthetic, elegant architectural still-life mood, no glass slab, no acrylic panel, no floating tabletop edge, no random pedestal, photorealistic luxury finish" title="프롬프트만 복사"><span>placed directly within a minimal architectural interior, on a continuous textured plaster or stone floor surface with a warm neutral paper-like backdrop, natural sunlight entering from an angled side direction to create soft high-contrast shadows, premium muted color grading, refined design catalog aesthetic, elegant architectural still-life mood, no glass slab, no acrylic panel, no floating tabletop edge, no random pedestal, photorealistic luxury finish</span><b>복사</b></button></td>
+      <td><code>beauty-archi</code></td>
+    </tr>
+<tr>
+      <td class="num">10</td>
+      <td class="label">석양빛 해변 파도</td>
+      <td>Golden-Hour Wet Sand &amp; Ocean Wave</td>
+      <td><button class="prompt-copy" type="button" data-copy="placed diagonally directly on wet beach sand as a gentle ocean wave washes naturally around it, delicate sea foam and tiny bubbles surrounding the base, fine sand texture visible beneath shallow clear water, high-detail water ripples, realistic foam patterns, natural reflections on the wet sand, warm golden-hour beach lighting, cinematic top-down flat-lay composition, fresh summer luxury aesthetic, no glass sheet, no acrylic panel, no artificial platform, photorealistic premium finish" title="프롬프트만 복사"><span>placed diagonally directly on wet beach sand as a gentle ocean wave washes naturally around it, delicate sea foam and tiny bubbles surrounding the base, fine sand texture visible beneath shallow clear water, high-detail water ripples, realistic foam patterns, natural reflections on the wet sand, warm golden-hour beach lighting, cinematic top-down flat-lay composition, fresh summer luxury aesthetic, no glass sheet, no acrylic panel, no artificial platform, photorealistic premium finish</span><b>복사</b></button></td>
+      <td><code>beauty-wave</code></td>
+    </tr>
+<tr>
+      <td class="num">11</td>
+      <td class="label">연꽃 스파 수면</td>
+      <td>Serene Deep Teal Spa Water &amp; Lotus</td>
+      <td><button class="prompt-copy" type="button" data-copy="submerged naturally in calm deep teal-green spa water with soft mist drifting across the surface, white lotus flowers and large green lily pads floating organically around the subject, soft diffused natural lighting, moody serene spa atmosphere, cinematic beauty composition, shallow depth of field, calming editorial luxury aesthetic, no glass plate, no acrylic block, no tabletop, no artificial display platform, photorealistic refined finish" title="프롬프트만 복사"><span>submerged naturally in calm deep teal-green spa water with soft mist drifting across the surface, white lotus flowers and large green lily pads floating organically around the subject, soft diffused natural lighting, moody serene spa atmosphere, cinematic beauty composition, shallow depth of field, calming editorial luxury aesthetic, no glass plate, no acrylic block, no tabletop, no artificial display platform, photorealistic refined finish</span><b>복사</b></button></td>
+      <td><code>beauty-spa</code></td>
+    </tr>
+<tr class="section-row"><td colspan="5">제품 표면</td></tr>
+<tr>
+      <td class="num">12</td>
+      <td class="label">석고 벽감</td>
+      <td>손으로 바른 듯 미세한 결의 오프화이트 석고 표면에 골든아워의 따뜻하고 부드러운 측면광이 감도는 탑다운 뷰를 연출합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="placed directly on a continuous hand-applied off-white plaster surface with subtle hand-troweled texture, the plaster surface blending naturally into a softly out-of-focus plaster wall receding into warm shadow behind, warm golden-hour sunlight raking from one side to create a smooth bright-to-shadow luminance gradient and long soft shadows, low three-quarter angle, shallow depth of field, 100mm macro lens, rich tonal depth, controlled warm highlights, quiet editorial luxury, no glass slab, no acrylic panel, no visible board edge, no extra platform, photorealistic premium finish" title="프롬프트만 복사"><span>placed directly on a continuous hand-applied off-white plaster surface with subtle hand-troweled texture, the plaster surface blending naturally into a softly out-of-focus plaster wall receding into warm shadow behind, warm golden-hour sunlight raking from one side to create a smooth bright-to-shadow luminance gradient and long soft shadows, low three-quarter angle, shallow depth of field, 100mm macro lens, rich tonal depth, controlled warm highlights, quiet editorial luxury, no glass slab, no acrylic panel, no visible board edge, no extra platform, photorealistic premium finish</span><b>복사</b></button></td>
+      <td><code>surface-plaster-niche</code></td>
+    </tr>
+<tr>
+      <td class="num">13</td>
+      <td class="label">석고 오브제</td>
+      <td>유기적인 곡선 형태의 조형감 있는 크림톤 석고 받침 위로 은은한 자연광과 긴 부드러운 그림자가 드리워진 구도를 만듭니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="placed naturally among sculptural cream-toned plaster forms with soft organic curves, the plaster forms feel like one integrated editorial set rather than a separate display board, dim softly blurred background falling into gentle shadow, soft diffused daylight from one side wrapping around the curves and casting long graceful shadows, near eye-level angle, shallow depth of field, 85mm lens, rich tonal gradation, tactile material depth, refined sculptural luxury mood, no glass plate, no acrylic panel, no unrelated platform, photorealistic" title="프롬프트만 복사"><span>placed naturally among sculptural cream-toned plaster forms with soft organic curves, the plaster forms feel like one integrated editorial set rather than a separate display board, dim softly blurred background falling into gentle shadow, soft diffused daylight from one side wrapping around the curves and casting long graceful shadows, near eye-level angle, shallow depth of field, 85mm lens, rich tonal gradation, tactile material depth, refined sculptural luxury mood, no glass plate, no acrylic panel, no unrelated platform, photorealistic</span><b>복사</b></button></td>
+      <td><code>surface-plaster-object</code></td>
+    </tr>
+<tr>
+      <td class="num">14</td>
+      <td class="label">트래버틴</td>
+      <td>자연스러운 공극과 결이 살아있는 밝은 베이지 트래버틴 스톤 위로 따뜻한 사선 햇빛이 부드러운 대비를 이루는 뷰입니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="placed directly on a continuous light beige travertine stone surface with natural pores and layered sediment texture, warm out-of-focus stone backdrop receding into soft shadow, warm angled sunlight grazing across the porous surface to reveal depth and cast soft directional shadows, low 30-degree angle, shallow depth of field, 100mm macro lens, rich earthy tonal range, controlled highlights, understated stone luxury, no glass slab, no acrylic panel, no tabletop edge, no extra platform, photorealistic premium finish" title="프롬프트만 복사"><span>placed directly on a continuous light beige travertine stone surface with natural pores and layered sediment texture, warm out-of-focus stone backdrop receding into soft shadow, warm angled sunlight grazing across the porous surface to reveal depth and cast soft directional shadows, low 30-degree angle, shallow depth of field, 100mm macro lens, rich earthy tonal range, controlled highlights, understated stone luxury, no glass slab, no acrylic panel, no tabletop edge, no extra platform, photorealistic premium finish</span><b>복사</b></button></td>
+      <td><code>surface-travertine</code></td>
+    </tr>
+<tr>
+      <td class="num">15</td>
+      <td class="label">화이트 마블</td>
+      <td>은은한 회색 베인이 들어간 고급스럽고 매트한 화이트 마블 표면에 부드러운 오전 자연광이 내리쬐는 화면을 구성합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="placed directly on a continuous matte white marble surface with subtle grey veining, the marble surface blending into a softly blurred bright interior behind, soft directional morning light creating a delicate luminance gradient and gentle gradient shadows, low three-quarter angle, shallow depth of field, 100mm macro lens, refined tonal depth, luminous soft highlights, clean gallery-like luxury, no glass shelf, no acrylic plate, no raised display board, no visible hard edge unless it is natural marble architecture, photorealistic premium finish" title="프롬프트만 복사"><span>placed directly on a continuous matte white marble surface with subtle grey veining, the marble surface blending into a softly blurred bright interior behind, soft directional morning light creating a delicate luminance gradient and gentle gradient shadows, low three-quarter angle, shallow depth of field, 100mm macro lens, refined tonal depth, luminous soft highlights, clean gallery-like luxury, no glass shelf, no acrylic plate, no raised display board, no visible hard edge unless it is natural marble architecture, photorealistic premium finish</span><b>복사</b></button></td>
+      <td><code>surface-white-marble</code></td>
+    </tr>
+<tr>
+      <td class="num">16</td>
+      <td class="label">리버 스톤</td>
+      <td>물에 잘 닳아 매끈해진 밝은 강돌들이 자연스럽게 놓인 표면 위로 잔잔하고 따뜻한 측면광이 흐르는 연출을 합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="placed naturally on an organic arrangement of smooth pale river stones, the stones receding and softening out of focus toward a shaded background, warm gentle side light skimming the rounded surfaces to model their form with soft pooled shadows between them, low near-surface angle, shallow depth of field, 100mm macro lens, rich tactile tonal depth, serene organic luxury mood, no glass panel, no acrylic plate, no tabletop edge, no artificial platform, photorealistic" title="프롬프트만 복사"><span>placed naturally on an organic arrangement of smooth pale river stones, the stones receding and softening out of focus toward a shaded background, warm gentle side light skimming the rounded surfaces to model their form with soft pooled shadows between them, low near-surface angle, shallow depth of field, 100mm macro lens, rich tactile tonal depth, serene organic luxury mood, no glass panel, no acrylic plate, no tabletop edge, no artificial platform, photorealistic</span><b>복사</b></button></td>
+      <td><code>surface-river-stone</code></td>
+    </tr>
+<tr>
+      <td class="num">17</td>
+      <td class="label">구겨진 린넨</td>
+      <td>자연스러운 주름이 잡힌 아이보리 린넨 패브릭 위로 창가에서 들어오는 은은한 채광과 섬세한 그림자를 표현합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="placed directly on softly wrinkled ivory linen fabric, the folds receding and blurring gently into shadow at the back, soft directional window light raking across the weave to bring out the fabric texture with delicate soft shadows in the creases, low three-quarter angle, shallow depth of field, 85mm lens, soft rich tonal gradation, intimate editorial luxury mood, no glass slab, no acrylic panel, no hard tabletop edge, no extra platform, photorealistic premium finish" title="프롬프트만 복사"><span>placed directly on softly wrinkled ivory linen fabric, the folds receding and blurring gently into shadow at the back, soft directional window light raking across the weave to bring out the fabric texture with delicate soft shadows in the creases, low three-quarter angle, shallow depth of field, 85mm lens, soft rich tonal gradation, intimate editorial luxury mood, no glass slab, no acrylic panel, no hard tabletop edge, no extra platform, photorealistic premium finish</span><b>복사</b></button></td>
+      <td><code>surface-linen</code></td>
+    </tr>
+<tr>
+      <td class="num">18</td>
+      <td class="label">코튼 머슬린</td>
+      <td>가볍고 부드러운 결이 살아있는 화이트 코튼 머슬린의 부드러운 주름 위로 옅은 황금빛의 확산광이 퍼지는 무드를 연출합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="placed directly on airy white cotton muslin with soft natural folds, the cloth falling away and softening out of focus into gentle shadow, soft golden diffused sunlight raking low across the folds to create a tender luminance gradient and soft shadow valleys, low near-eye-level angle, shallow depth of field, 85mm lens, soft luminous tonal depth, delicate refined luxury mood, no glass plate, no acrylic panel, no visible board edge, no unrelated platform, photorealistic" title="프롬프트만 복사"><span>placed directly on airy white cotton muslin with soft natural folds, the cloth falling away and softening out of focus into gentle shadow, soft golden diffused sunlight raking low across the folds to create a tender luminance gradient and soft shadow valleys, low near-eye-level angle, shallow depth of field, 85mm lens, soft luminous tonal depth, delicate refined luxury mood, no glass plate, no acrylic panel, no visible board edge, no unrelated platform, photorealistic</span><b>복사</b></button></td>
+      <td><code>surface-cotton-muslin</code></td>
+    </tr>
+<tr>
+      <td class="num">19</td>
+      <td class="label">밝은 우드</td>
+      <td>햇볕에 바랜 듯 내추럴한 밝은 애쉬 우드의 나뭇결 위로 따뜻하고 부드러운 사선 햇빛이 떨어지는 컷을 연출합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="placed directly on a continuous sun-bleached light ash wood surface with fine natural grain, warm softly blurred background receding into shadow, warm soft diagonal sunlight grazing along the grain to reveal texture and cast long gentle shadows, low three-quarter angle, shallow depth of field, 100mm macro lens, warm rich tonal depth, controlled highlights, natural understated luxury, no glass sheet, no acrylic panel, no separate display board, no extra platform, photorealistic premium finish" title="프롬프트만 복사"><span>placed directly on a continuous sun-bleached light ash wood surface with fine natural grain, warm softly blurred background receding into shadow, warm soft diagonal sunlight grazing along the grain to reveal texture and cast long gentle shadows, low three-quarter angle, shallow depth of field, 100mm macro lens, warm rich tonal depth, controlled highlights, natural understated luxury, no glass sheet, no acrylic panel, no separate display board, no extra platform, photorealistic premium finish</span><b>복사</b></button></td>
+      <td><code>surface-light-wood</code></td>
+    </tr>
+<tr>
+      <td class="num">20</td>
+      <td class="label">월넛 포인트</td>
+      <td>유려하고 부드러운 결을 가진 라이트 월넛 우드 표면을 배경으로 늦은 오후의 차분하고 고즈넉한 자연광을 매칭합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="placed directly on a continuous light walnut wood surface with elegant flowing grain, deep softly blurred warm background falling into shadow, calm late-afternoon directional light raking across the grain to create a rich luminance gradient and long soft shadows, low three-quarter angle, shallow depth of field, 100mm macro lens, deep warm tonal range, refined highlights, quiet sophisticated luxury mood, no glass slab, no acrylic panel, no tabletop edge, no unrelated platform, photorealistic" title="프롬프트만 복사"><span>placed directly on a continuous light walnut wood surface with elegant flowing grain, deep softly blurred warm background falling into shadow, calm late-afternoon directional light raking across the grain to create a rich luminance gradient and long soft shadows, low three-quarter angle, shallow depth of field, 100mm macro lens, deep warm tonal range, refined highlights, quiet sophisticated luxury mood, no glass slab, no acrylic panel, no tabletop edge, no unrelated platform, photorealistic</span><b>복사</b></button></td>
+      <td><code>surface-walnut</code></td>
+    </tr>
+<tr>
+      <td class="num">21</td>
+      <td class="label">백사장 모래</td>
+      <td>잔물결 무늬가 잡힌 고운 밝은 백사장 모래 위로 낮게 비추는 따뜻한 햇빛과 부드러운 그림자가 어우러집니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="placed directly on fine pale sand with subtle rippled patterns, the sand surface receding and softening out of focus into a shaded distance, low warm sunlight skimming across the ripples to carve out soft texture and long delicate shadows, low near-surface angle, shallow depth of field, 100mm macro lens, warm rich tonal depth, serene natural luxury mood, no glass sheet, no acrylic panel, no artificial board, no extra platform, photorealistic premium finish" title="프롬프트만 복사"><span>placed directly on fine pale sand with subtle rippled patterns, the sand surface receding and softening out of focus into a shaded distance, low warm sunlight skimming across the ripples to carve out soft texture and long delicate shadows, low near-surface angle, shallow depth of field, 100mm macro lens, warm rich tonal depth, serene natural luxury mood, no glass sheet, no acrylic panel, no artificial board, no extra platform, photorealistic premium finish</span><b>복사</b></button></td>
+      <td><code>surface-sand</code></td>
+    </tr>
+<tr>
+      <td class="num">22</td>
+      <td class="label">말린 클레이</td>
+      <td>자연스럽게 갈라진 텍스처가 돋보이는 밝은 클레이 표면에 부드러운 측면 자연광을 매칭하여 내추럴함을 극대화합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="placed directly on a continuous pale dried clay surface with natural cracking texture, warm out-of-focus background receding into soft shadow, soft side natural light grazing the cracked surface to deepen the texture with delicate shadow lines, low 30-degree angle, shallow depth of field, 100mm macro lens, earthy rich tonal depth, raw refined luxury mood, no glass plate, no acrylic panel, no visible tabletop edge, no unrelated platform, photorealistic" title="프롬프트만 복사"><span>placed directly on a continuous pale dried clay surface with natural cracking texture, warm out-of-focus background receding into soft shadow, soft side natural light grazing the cracked surface to deepen the texture with delicate shadow lines, low 30-degree angle, shallow depth of field, 100mm macro lens, earthy rich tonal depth, raw refined luxury mood, no glass plate, no acrylic panel, no visible tabletop edge, no unrelated platform, photorealistic</span><b>복사</b></button></td>
+      <td><code>surface-clay</code></td>
+    </tr>
+<tr>
+      <td class="num">23</td>
+      <td class="label">얕은 물결</td>
+      <td>얕은 물 위에 맑고 투명한 물결 반사가 드리워진 밝은 배경과 깨끗하고 부드러운 자연광의 시너지를 표현합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="placed directly on a bright continuous surface covered by a very thin layer of shallow water, soft reflected ripples moving across the background, the wet surface receding and softening into a gently shaded distance, clean soft natural sunlight catching the ripples with delicate specular glints and natural soft reflections, low near-surface angle, shallow depth of field, 100mm macro lens, luminous tonal depth, fresh ethereal luxury mood, no glass sheet, no acrylic panel, no raised transparent plate, no visible hard edge, photorealistic premium finish" title="프롬프트만 복사"><span>placed directly on a bright continuous surface covered by a very thin layer of shallow water, soft reflected ripples moving across the background, the wet surface receding and softening into a gently shaded distance, clean soft natural sunlight catching the ripples with delicate specular glints and natural soft reflections, low near-surface angle, shallow depth of field, 100mm macro lens, luminous tonal depth, fresh ethereal luxury mood, no glass sheet, no acrylic panel, no raised transparent plate, no visible hard edge, photorealistic premium finish</span><b>복사</b></button></td>
+      <td><code>surface-water-ripple</code></td>
+    </tr>
+<tr>
+      <td class="num">24</td>
+      <td class="label">프로스트 글라스</td>
+      <td>은은하게 흐려진 프로스트 글라스 표면 위로 반투명하고 부드럽게 번지는 맑은 측면광 조명 무드를 연출합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="placed directly within a seamless frosted-luminous studio environment, soft translucent glow appearing as an atmospheric background effect only, not as a physical glass object, the surface and background blend continuously like an infinity cove with no visible panel edge, softly glowing blurred background bleeding through the luminous haze, soft clean side lighting creating a gentle luminance gradient and subtle glow around the subject, low three-quarter angle without revealing any shelf or board edge, shallow depth of field, 100mm macro lens, soft luminous tonal depth, delicate highlights, modern clean luxury, absolutely no visible glass slab, no frosted glass sheet, no acrylic panel, no shelf, no tabletop, no raised platform, no rectangular plane, no hard corner, photorealistic premium commercial finish" title="프롬프트만 복사"><span>placed directly within a seamless frosted-luminous studio environment, soft translucent glow appearing as an atmospheric background effect only, not as a physical glass object, the surface and background blend continuously like an infinity cove with no visible panel edge, softly glowing blurred background bleeding through the luminous haze, soft clean side lighting creating a gentle luminance gradient and subtle glow around the subject, low three-quarter angle without revealing any shelf or board edge, shallow depth of field, 100mm macro lens, soft luminous tonal depth, delicate highlights, modern clean luxury, absolutely no visible glass slab, no frosted glass sheet, no acrylic panel, no shelf, no tabletop, no raised platform, no rectangular plane, no hard corner, photorealistic premium commercial finish</span><b>복사</b></button></td>
+      <td><code>surface-frosted-glass</code></td>
+    </tr>
+<tr>
+      <td class="num">25</td>
+      <td class="label">코튼 페이퍼</td>
+      <td>미세한 종이 섬유 결이 고급스럽게 살아있는 두꺼운 오프화이트 코튼 페이퍼와 은은한 확산 자연광의 에디토리얼 조합입니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="placed directly on thick off-white cotton paper with subtle fiber texture, softly blurred neutral background receding into gentle shadow, soft diffused natural light raking lightly across the paper to reveal its fiber grain with a tender luminance gradient, low three-quarter angle, shallow depth of field, 100mm macro lens, refined soft tonal depth, editorial minimal luxury, no glass slab, no acrylic panel, no hard tabletop edge, no extra display board, photorealistic premium finish" title="프롬프트만 복사"><span>placed directly on thick off-white cotton paper with subtle fiber texture, softly blurred neutral background receding into gentle shadow, soft diffused natural light raking lightly across the paper to reveal its fiber grain with a tender luminance gradient, low three-quarter angle, shallow depth of field, 100mm macro lens, refined soft tonal depth, editorial minimal luxury, no glass slab, no acrylic panel, no hard tabletop edge, no extra display board, photorealistic premium finish</span><b>복사</b></button></td>
+      <td><code>surface-cotton-paper</code></td>
+    </tr></tbody>
+    </table></div>
+  </section>
+<section class="card" id="cat-booster">
+    <div class="section-head">
+      <div><p class="eyebrow">FINISHING</p><h2>부스터 <small>booster</small></h2></div>
+      <span class="count">9개 항목</span>
+    </div>
+    <p class="desc"><strong>미모를 얼마나 끌어올릴까요?</strong> - 성별에 맞는 미모·매력 강화 단계를 하나만 고르면, 선택한 스타일이 인물 묘사에 더해집니다.</p>
+    <div class="table-wrap"><table><colgroup><col class="col-no"><col class="col-label"><col class="col-tip"><col class="col-prompt"><col class="col-id"></colgroup>
+      <thead><tr><th>No</th><th>메뉴/버튼명</th><th>툴팁</th><th>프롬프트 복사 셀</th><th>ID</th></tr></thead>
+      <tbody><tr class="section-row"><td colspan="5">여성</td></tr>
+<tr>
+      <td class="num">1</td>
+      <td class="label">미모 기본값</td>
+      <td>평범한 인물을 화보급 패션 모델 수준의 또렷한 이목구비와 질감이 살아있는 피부로 끌어올립니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="high fashion editorial model, beautiful refined symmetrical features, captivating eyes, flawless luminous skin, fine natural skin texture" title="프롬프트만 복사"><span>high fashion editorial model, beautiful refined symmetrical features, captivating eyes, flawless luminous skin, fine natural skin texture</span><b>복사</b></button></td>
+      <td><code>boost-f-base</code></td>
+    </tr>
+<tr>
+      <td class="num">2</td>
+      <td class="label">화보 미모</td>
+      <td>화려하고 매혹적인 미모와 입체적인 골격을 더해 매혹적이고 강렬한 미모 수치를 극대화합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="Victoria&#39;s Secret model aesthetic, striking facial structure, high cheekbones, full soft lips, alluring captivating gaze, breathtakingly beautiful" title="프롬프트만 복사"><span>Victoria&#39;s Secret model aesthetic, striking facial structure, high cheekbones, full soft lips, alluring captivating gaze, breathtakingly beautiful</span><b>복사</b></button></td>
+      <td><code>boost-f-glam</code></td>
+    </tr>
+<tr>
+      <td class="num">3</td>
+      <td class="label">청순 여배우</td>
+      <td>맑고 투명한 피부와 기품 있는 이목구비로 우아하고 청순한 톱 여배우 특유의 고급스러운 분위기를 더합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="top-tier elegant actress aesthetic, graceful and refined facial features, innocent yet captivating look, translucent glowing skin, ethereal beauty" title="프롬프트만 복사"><span>top-tier elegant actress aesthetic, graceful and refined facial features, innocent yet captivating look, translucent glowing skin, ethereal beauty</span><b>복사</b></button></td>
+      <td><code>boost-f-elegant</code></td>
+    </tr>
+<tr>
+      <td class="num">4</td>
+      <td class="label">트렌디 아이돌</td>
+      <td>인형같이 크고 또렷한 눈매와 결점 없는 화려함을 갖춘 트렌디한 걸그룹 센터 비주얼로 끌어올립니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="trendy K-pop center visual, striking and flawless facial structure, perfectly styled, expressive doll-like eyes, undeniably gorgeous" title="프롬프트만 복사"><span>trendy K-pop center visual, striking and flawless facial structure, perfectly styled, expressive doll-like eyes, undeniably gorgeous</span><b>복사</b></button></td>
+      <td><code>boost-f-idol</code></td>
+    </tr>
+<tr>
+      <td class="num">5</td>
+      <td class="label">시네마틱 뮤즈</td>
+      <td>영화 속 뮤즈처럼 깊이 있고 서정적인 이목구비를 부여하여 사색적이고 독보적인 분위기 미인으로 만듭니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="cinematic muse aesthetic, deeply expressive facial features, melancholic yet breathtakingly beautiful, timeless elegant beauty" title="프롬프트만 복사"><span>cinematic muse aesthetic, deeply expressive facial features, melancholic yet breathtakingly beautiful, timeless elegant beauty</span><b>복사</b></button></td>
+      <td><code>boost-f-muse</code></td>
+    </tr>
+<tr class="section-row"><td colspan="5">남성</td></tr>
+<tr>
+      <td class="num">6</td>
+      <td class="label">멋짐 부스터</td>
+      <td>평범한 남성 인물을 하이패션 모델 수준의 뚜렷한 이목구비와 날렵한 턱선을 가진 멋진 얼굴로 끌어올립니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="high fashion male model, sharp masculine features, strong jawline, intense eyes, flawless clear skin, natural skin texture" title="프롬프트만 복사"><span>high fashion male model, sharp masculine features, strong jawline, intense eyes, flawless clear skin, natural skin texture</span><b>복사</b></button></td>
+      <td><code>boost-m-base</code></td>
+    </tr>
+<tr>
+      <td class="num">7</td>
+      <td class="label">간지 부스터</td>
+      <td>정제되면서도 거친 느낌이 공존하는 분위기 있는 멘즈웨어 화보 모델 특유의 독보적인 간지와 아우라를 더합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="editorial menswear model, striking facial structure, rugged yet refined look, effortless charisma, cinematic masculine aura" title="프롬프트만 복사"><span>editorial menswear model, striking facial structure, rugged yet refined look, effortless charisma, cinematic masculine aura</span><b>복사</b></button></td>
+      <td><code>boost-m-edgy</code></td>
+    </tr>
+<tr>
+      <td class="num">8</td>
+      <td class="label">잘생김 부스터 ①</td>
+      <td>클래식하고 정석적인 미남형으로, 완벽한 비율과 깔끔하고 세련된 귀공자 스타일의 완벽한 잘생김을 극대화합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="classic handsome male face, perfectly proportioned symmetrical features, clean-cut aesthetic, elegant and sophisticated, captivating gaze" title="프롬프트만 복사"><span>classic handsome male face, perfectly proportioned symmetrical features, clean-cut aesthetic, elegant and sophisticated, captivating gaze</span><b>복사</b></button></td>
+      <td><code>boost-m-classic</code></td>
+    </tr>
+<tr>
+      <td class="num">9</td>
+      <td class="label">잘생김 부스터 ②</td>
+      <td>트렌디한 아이돌 비주얼의 결점 없는 화려한 이목구비와 부드러운 카리스마를 더해 트렌디한 미남을 연출합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="top-tier K-pop idol visual, trendy and flawless handsome face, soft charismatic expression, beautiful sharp nose, breathtakingly handsome" title="프롬프트만 복사"><span>top-tier K-pop idol visual, trendy and flawless handsome face, soft charismatic expression, beautiful sharp nose, breathtakingly handsome</span><b>복사</b></button></td>
+      <td><code>boost-m-idol</code></td>
+    </tr></tbody>
+    </table></div>
+  </section>
+<section class="card" id="cat-detail">
+    <div class="section-head">
+      <div><p class="eyebrow">FINISHING</p><h2>디테일 <small>detail</small></h2></div>
+      <span class="count">9개 항목</span>
+    </div>
+    <p class="desc"><strong>어떤 디테일을 더할까요?</strong> - 재질, 색감, 완성도를 보강하는 짧은 조건입니다.</p>
+    <div class="table-wrap"><table><colgroup><col class="col-no"><col class="col-label"><col class="col-tip"><col class="col-prompt"><col class="col-id"></colgroup>
+      <thead><tr><th>No</th><th>메뉴/버튼명</th><th>툴팁</th><th>프롬프트 복사 셀</th><th>ID</th></tr></thead>
+      <tbody><tr>
+      <td class="num">1</td>
+      <td class="label">재질 강조</td>
+      <td>표면 질감과 재질을 선명하게</td>
+      <td><button class="prompt-copy" type="button" data-copy="emphasized material texture" title="프롬프트만 복사"><span>emphasized material texture</span><b>복사</b></button></td>
+      <td><code>texture</code></td>
+    </tr>
+<tr>
+      <td class="num">2</td>
+      <td class="label">자연스러운 피부</td>
+      <td>과보정 없는 자연스러운 피부 질감</td>
+      <td><button class="prompt-copy" type="button" data-copy="natural skin texture, realistic skin" title="프롬프트만 복사"><span>natural skin texture, realistic skin</span><b>복사</b></button></td>
+      <td><code>skin</code></td>
+    </tr>
+<tr>
+      <td class="num">3</td>
+      <td class="label">프리미엄</td>
+      <td>광고 같은 고급 마무리</td>
+      <td><button class="prompt-copy" type="button" data-copy="premium commercial finish" title="프롬프트만 복사"><span>premium commercial finish</span><b>복사</b></button></td>
+      <td><code>premium</code></td>
+    </tr>
+<tr>
+      <td class="num">4</td>
+      <td class="label">반사</td>
+      <td>자연스러운 반사와 광택</td>
+      <td><button class="prompt-copy" type="button" data-copy="natural reflections" title="프롬프트만 복사"><span>natural reflections</span><b>복사</b></button></td>
+      <td><code>reflection</code></td>
+    </tr>
+<tr>
+      <td class="num">5</td>
+      <td class="label">고대비</td>
+      <td>선명하고 강한 인상</td>
+      <td><button class="prompt-copy" type="button" data-copy="high contrast" title="프롬프트만 복사"><span>high contrast</span><b>복사</b></button></td>
+      <td><code>contrast</code></td>
+    </tr>
+<tr>
+      <td class="num">6</td>
+      <td class="label">영화 색감</td>
+      <td>영화 같은 색보정 톤</td>
+      <td><button class="prompt-copy" type="button" data-copy="cinematic color grading" title="프롬프트만 복사"><span>cinematic color grading</span><b>복사</b></button></td>
+      <td><code>cinematic-color</code></td>
+    </tr>
+<tr>
+      <td class="num">7</td>
+      <td class="label">미니멀</td>
+      <td>군더더기 없는 정리된 화면</td>
+      <td><button class="prompt-copy" type="button" data-copy="minimal composition" title="프롬프트만 복사"><span>minimal composition</span><b>복사</b></button></td>
+      <td><code>minimal</code></td>
+    </tr>
+<tr>
+      <td class="num">8</td>
+      <td class="label">선명함</td>
+      <td>디테일과 초점이 또렷한 느낌</td>
+      <td><button class="prompt-copy" type="button" data-copy="crisp details, sharp focus" title="프롬프트만 복사"><span>crisp details, sharp focus</span><b>복사</b></button></td>
+      <td><code>sharp</code></td>
+    </tr>
+<tr>
+      <td class="num">9</td>
+      <td class="label">속광</td>
+      <td>빛이 안쪽에서 은은하게 번지는 반투명한 속광 질감으로 재질의 깊이감과 촉촉한 광택을 표현합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="soft subsurface scattering with light glowing through from within, translucent dewy material with realistic inner depth, gentle backlight and soft rim light revealing the inner glow, delicate specular highlights on a moist luminous surface, rich material realism, photorealistic" title="프롬프트만 복사"><span>soft subsurface scattering with light glowing through from within, translucent dewy material with realistic inner depth, gentle backlight and soft rim light revealing the inner glow, delicate specular highlights on a moist luminous surface, rich material realism, photorealistic</span><b>복사</b></button></td>
+      <td><code>surface-glow</code></td>
+    </tr></tbody>
+    </table></div>
+  </section>
+<section class="card" id="cat-skinFinish">
+    <div class="section-head">
+      <div><p class="eyebrow">FINISHING</p><h2>피부 표현 <small>skinFinish</small></h2></div>
+      <span class="count">10개 항목</span>
+    </div>
+    <p class="desc"><strong>어떤 피부 표현을 더할까요?</strong> - 피부결, 모공, 윤광, 눈썹처럼 인물 사진의 현실감과 K-뷰티 무드를 조절합니다.</p>
+    <div class="table-wrap"><table><colgroup><col class="col-no"><col class="col-label"><col class="col-tip"><col class="col-prompt"><col class="col-id"></colgroup>
+      <thead><tr><th>No</th><th>메뉴/버튼명</th><th>툴팁</th><th>프롬프트 복사 셀</th><th>ID</th></tr></thead>
+      <tbody><tr>
+      <td class="num">1</td>
+      <td class="label">피부결</td>
+      <td>플라스틱 느낌을 지우고 렌즈에 바짝 밀착한 듯한 극사실적인 실제 피부 질감을 표현합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="hyper-realistic micro skin texture, high-fidelity skin pores detail" title="프롬프트만 복사"><span>hyper-realistic micro skin texture, high-fidelity skin pores detail</span><b>복사</b></button></td>
+      <td><code>skin-texture</code></td>
+    </tr>
+<tr>
+      <td class="num">2</td>
+      <td class="label">미세 모공</td>
+      <td>과도한 보정을 피하고 자연스럽고 미세한 모공 흔적을 살려 현실감을 더합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="visible but minimized skin pores, natural skin texture without blurring" title="프롬프트만 복사"><span>visible but minimized skin pores, natural skin texture without blurring</span><b>복사</b></button></td>
+      <td><code>skin-pores</code></td>
+    </tr>
+<tr>
+      <td class="num">3</td>
+      <td class="label">얼굴 솜털</td>
+      <td>빛을 받았을 때 얼굴 외곽에 미세하게 빛나는 솜털 디테일로 실사 사진 같은 유수분을 만듭니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="fine vellus hair on cheeks, delicate facial peach fuzz catching the light" title="프롬프트만 복사"><span>fine vellus hair on cheeks, delicate facial peach fuzz catching the light</span><b>복사</b></button></td>
+      <td><code>skin-vellus</code></td>
+    </tr>
+<tr>
+      <td class="num">4</td>
+      <td class="label">애교살</td>
+      <td>한국식 인물 표현의 핵심인 눈 밑 애교살의 부드러운 볼륨감을 자연스럽게 살려줍니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="defined natural aegyo-sal, soft under-eye volume, smiling eyes" title="프롬프트만 복사"><span>defined natural aegyo-sal, soft under-eye volume, smiling eyes</span><b>복사</b></button></td>
+      <td><code>skin-aegyosal</code></td>
+    </tr>
+<tr>
+      <td class="num">5</td>
+      <td class="label">일자 눈썹</td>
+      <td>아치가 강한 서양식 눈썹 대신 세련되고 차분한 한국 스타일의 일자형 눈썹을 연출합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="soft straight Korean brows, neat and natural eyebrow texture" title="프롬프트만 복사"><span>soft straight Korean brows, neat and natural eyebrow texture</span><b>복사</b></button></td>
+      <td><code>skin-straight-brows</code></td>
+    </tr>
+<tr>
+      <td class="num">6</td>
+      <td class="label">촉촉한 피부</td>
+      <td>K-뷰티 특유의 수분을 가득 머금은 듯 촉촉하고 생기 있는 피부 베이스를 만듭니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="hydrated chok-chok skin texture, healthy moisture-rich K-beauty complexion" title="프롬프트만 복사"><span>hydrated chok-chok skin texture, healthy moisture-rich K-beauty complexion</span><b>복사</b></button></td>
+      <td><code>skin-chokchok</code></td>
+    </tr>
+<tr>
+      <td class="num">7</td>
+      <td class="label">유리알 피부</td>
+      <td>잡티 없이 맑고 투명하게 빛나는 투명한 유리판 같은 피부감을 표현합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="glass skin translucency, ultra-clear and flawless radiant complexion" title="프롬프트만 복사"><span>glass skin translucency, ultra-clear and flawless radiant complexion</span><b>복사</b></button></td>
+      <td><code>skin-glass</code></td>
+    </tr>
+<tr>
+      <td class="num">8</td>
+      <td class="label">꿀광/윤광</td>
+      <td>기름진 번들거림이 아니라 피부 속에서부터 은은하고 우아하게 차오르는 윤광을 만듭니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="subtle honey skin glow, radiant luminous skin from within" title="프롬프트만 복사"><span>subtle honey skin glow, radiant luminous skin from within</span><b>복사</b></button></td>
+      <td><code>skin-honey-glow</code></td>
+    </tr>
+<tr>
+      <td class="num">9</td>
+      <td class="label">물광/매트</td>
+      <td>방금 메이크업을 마친 듯 촉촉하게 반짝이는 물광 물기 질감을 연출합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="dewy skin finish, fresh moisture glaze, natural skin reflection" title="프롬프트만 복사"><span>dewy skin finish, fresh moisture glaze, natural skin reflection</span><b>복사</b></button></td>
+      <td><code>skin-dewy-matte</code></td>
+    </tr>
+<tr>
+      <td class="num">10</td>
+      <td class="label">부분 매트</td>
+      <td>이마와 턱은 매트하게 잡아주어 번들거림을 막고 완벽한 유수분 밸런스의 현실적 피부를 만듭니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="strategic matte zones on T-zone and chin, realistic skin oil-water balance" title="프롬프트만 복사"><span>strategic matte zones on T-zone and chin, realistic skin oil-water balance</span><b>복사</b></button></td>
+      <td><code>skin-partial-matte</code></td>
+    </tr></tbody>
+    </table></div>
+  </section>
+<section class="card" id="cat-film">
+    <div class="section-head">
+      <div><p class="eyebrow">FINISHING</p><h2>효과 <small>film</small></h2></div>
+      <span class="count">15개 항목</span>
+    </div>
+    <p class="desc"><strong>어떤 효과를 더할까요?</strong> - 필름 특유의 빛 번짐과 입자감으로 아날로그 무드를 더하는 효과입니다.</p>
+    <div class="table-wrap"><table><colgroup><col class="col-no"><col class="col-label"><col class="col-tip"><col class="col-prompt"><col class="col-id"></colgroup>
+      <thead><tr><th>No</th><th>메뉴/버튼명</th><th>툴팁</th><th>프롬프트 복사 셀</th><th>ID</th></tr></thead>
+      <tbody><tr>
+      <td class="num">1</td>
+      <td class="label">빛 번짐</td>
+      <td>강한 빛이 번져 몽환적이고 부드러운 느낌을 줘요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="halation, soft glow bleeding around highlights" title="프롬프트만 복사"><span>halation, soft glow bleeding around highlights</span><b>복사</b></button></td>
+      <td><code>halation</code></td>
+    </tr>
+<tr>
+      <td class="num">2</td>
+      <td class="label">하이라이트 퍼짐</td>
+      <td>밝은 영역이 퍼져서 꿈같은 분위기를 만들어요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="bloom effect, glowing soft highlights" title="프롬프트만 복사"><span>bloom effect, glowing soft highlights</span><b>복사</b></button></td>
+      <td><code>bloom</code></td>
+    </tr>
+<tr>
+      <td class="num">3</td>
+      <td class="label">검정 띄우기</td>
+      <td>검정을 완전한 검정이 아닌 살짝 회색으로 띄워요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="lifted blacks, faded low-contrast shadows" title="프롬프트만 복사"><span>lifted blacks, faded low-contrast shadows</span><b>복사</b></button></td>
+      <td><code>lifted-blacks</code></td>
+    </tr>
+<tr>
+      <td class="num">4</td>
+      <td class="label">색수차</td>
+      <td>렌즈 끝 색이 살짝 어긋나 필름 느낌을 강화해요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="subtle chromatic aberration, color fringing" title="프롬프트만 복사"><span>subtle chromatic aberration, color fringing</span><b>복사</b></button></td>
+      <td><code>chromatic</code></td>
+    </tr>
+<tr>
+      <td class="num">5</td>
+      <td class="label">확산 필터</td>
+      <td>빛을 부드럽게 퍼뜨려 피부와 장면을 은은하게 만들어요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="soft diffusion filter, dreamy light scatter" title="프롬프트만 복사"><span>soft diffusion filter, dreamy light scatter</span><b>복사</b></button></td>
+      <td><code>soft-diffusion</code></td>
+    </tr>
+<tr>
+      <td class="num">6</td>
+      <td class="label">필름 그레인</td>
+      <td>필름 고유의 입자가 만들어내는 아날로그 질감을 더해요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="fine film grain, analog texture" title="프롬프트만 복사"><span>fine film grain, analog texture</span><b>복사</b></button></td>
+      <td><code>grain</code></td>
+    </tr>
+<tr>
+      <td class="num">7</td>
+      <td class="label">공기입자</td>
+      <td>빛 속에 떠 있는 미세 입자로 공기감과 공간감을 더함</td>
+      <td><button class="prompt-copy" type="button" data-copy="visible air particles, floating dust motes catching the light, atmospheric texture" title="프롬프트만 복사"><span>visible air particles, floating dust motes catching the light, atmospheric texture</span><b>복사</b></button></td>
+      <td><code>air-particles</code></td>
+    </tr>
+<tr class="section-row"><td colspan="5">사실적</td></tr>
+<tr>
+      <td class="num">8</td>
+      <td class="label">사실적인 텍스처</td>
+      <td>부드러운 자연광에서 실제와 같은 텍스처로 포착된 매우 세밀하고 사실적인 장면</td>
+      <td><button class="prompt-copy" type="button" data-copy="a highly detailed realistic scene, captured in soft natural light with lifelike textures" title="프롬프트만 복사"><span>a highly detailed realistic scene, captured in soft natural light with lifelike textures</span><b>복사</b></button></td>
+      <td><code>real-scene</code></td>
+    </tr>
+<tr>
+      <td class="num">9</td>
+      <td class="label">중앙 초점</td>
+      <td>50mm 렌즈와 얕은 피사계 심도로 촬영된 사실적인 클로즈업</td>
+      <td><button class="prompt-copy" type="button" data-copy="a realistic close-up, shot on a 50mm lens with shallow depth of field" title="프롬프트만 복사"><span>a realistic close-up, shot on a 50mm lens with shallow depth of field</span><b>복사</b></button></td>
+      <td><code>real-closeup</code></td>
+    </tr>
+<tr>
+      <td class="num">10</td>
+      <td class="label">해질녘 풍경</td>
+      <td>해질녘을 담은 선명하고 사실적인 야외 풍경</td>
+      <td><button class="prompt-copy" type="button" data-copy="a crisp realistic outdoor scene at sunset" title="프롬프트만 복사"><span>a crisp realistic outdoor scene at sunset</span><b>복사</b></button></td>
+      <td><code>real-outdoor</code></td>
+    </tr>
+<tr>
+      <td class="num">11</td>
+      <td class="label">제품 사진</td>
+      <td>깔끔하고 미니멀한 배경의 세부 제품 사진</td>
+      <td><button class="prompt-copy" type="button" data-copy="a detailed product photograph, on a clean minimal background" title="프롬프트만 복사"><span>a detailed product photograph, on a clean minimal background</span><b>복사</b></button></td>
+      <td><code>real-product</code></td>
+    </tr>
+<tr>
+      <td class="num">12</td>
+      <td class="label">그림자와 반사</td>
+      <td>그림자와 반사가 자연스럽게 표현된 사실적인 환경 장면</td>
+      <td><button class="prompt-copy" type="button" data-copy="a realistic environmental scene, with natural shadows and reflections" title="프롬프트만 복사"><span>a realistic environmental scene, with natural shadows and reflections</span><b>복사</b></button></td>
+      <td><code>real-env</code></td>
+    </tr>
+<tr class="section-row"><td colspan="5">제품</td></tr>
+<tr>
+      <td class="num">13</td>
+      <td class="label">프리미엄 제품 사진</td>
+      <td>깔끔한 스튜디오 배경에서 형태와 재질을 강조한 프리미엄 제품 사진</td>
+      <td><button class="prompt-copy" type="button" data-copy="a premium product photograph, emphasizing shape and material on a clean studio background" title="프롬프트만 복사"><span>a premium product photograph, emphasizing shape and material on a clean studio background</span><b>복사</b></button></td>
+      <td><code>product-premium</code></td>
+    </tr>
+<tr>
+      <td class="num">14</td>
+      <td class="label">제품 클로즈업</td>
+      <td>표면 질감과 미세 디테일을 극단적으로 가까이 잡는 컷</td>
+      <td><button class="prompt-copy" type="button" data-copy="an extreme macro product close-up, highlighting surface texture and fine details" title="프롬프트만 복사"><span>an extreme macro product close-up, highlighting surface texture and fine details</span><b>복사</b></button></td>
+      <td><code>product-macro-closeup</code></td>
+    </tr>
+<tr>
+      <td class="num">15</td>
+      <td class="label">상업용 제품 이미지</td>
+      <td>밝고 깨끗한 광고 조명으로 촬영한 상업용 제품 이미지</td>
+      <td><button class="prompt-copy" type="button" data-copy="a commercial product image, shot with bright clean advertising lighting" title="프롬프트만 복사"><span>a commercial product image, shot with bright clean advertising lighting</span><b>복사</b></button></td>
+      <td><code>product-commercial</code></td>
+    </tr>
+</tbody>
+    </table></div>
+  </section>
+<section class="card" id="cat-filmStock">
+    <div class="section-head">
+      <div><p class="eyebrow">FINISHING</p><h2>필름 <small>filmStock</small></h2></div>
+      <span class="count">17개 항목</span>
+    </div>
+    <p class="desc"><strong>어떤 필름으로 찍을까요?</strong> - 카메라와 필름 고유의 색감·질감으로 사진 전체의 룩을 결정하는 프리셋입니다.</p>
+    <div class="table-wrap"><table><colgroup><col class="col-no"><col class="col-label"><col class="col-tip"><col class="col-prompt"><col class="col-id"></colgroup>
+      <thead><tr><th>No</th><th>메뉴/버튼명</th><th>툴팁</th><th>프롬프트 복사 셀</th><th>ID</th></tr></thead>
+      <tbody><tr>
+      <td class="num">1</td>
+      <td class="label">캐논인물</td>
+      <td>캐논 특유의 화사하고 따뜻한 색감으로 부드러운 고해상도 인물 사진을 연출합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="captured with a Canon EOS R5 and RF 50mm f/1.2L at wide aperture, Canon color science with warm flattering skin tones and a gentle magenta-warm rendering, creamy smooth bokeh with rounded highlights, soft wrap-around lighting, fine skin texture retained, high detail, photorealistic" title="프롬프트만 복사"><span>captured with a Canon EOS R5 and RF 50mm f/1.2L at wide aperture, Canon color science with warm flattering skin tones and a gentle magenta-warm rendering, creamy smooth bokeh with rounded highlights, soft wrap-around lighting, fine skin texture retained, high detail, photorealistic</span><b>복사</b></button></td>
+      <td><code>fs-canon-portrait</code></td>
+    </tr>
+<tr>
+      <td class="num">2</td>
+      <td class="label">니콘풍경</td>
+      <td>선명한 디테일과 높은 대비로 웅장하고 강렬한 색채의 일몰 풍경을 표현합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="taken with a Nikon D850 and wide-angle lens, vast dynamic range holding detail in both deep shadows and a bright sunset sky, crisp edge-to-edge 45MP resolution with strong micro-contrast, richly saturated golden sky with deep clean blues, punchy high contrast, photorealistic" title="프롬프트만 복사"><span>taken with a Nikon D850 and wide-angle lens, vast dynamic range holding detail in both deep shadows and a bright sunset sky, crisp edge-to-edge 45MP resolution with strong micro-contrast, richly saturated golden sky with deep clean blues, punchy high contrast, photorealistic</span><b>복사</b></button></td>
+      <td><code>fs-nikon-landscape</code></td>
+    </tr>
+<tr>
+      <td class="num">3</td>
+      <td class="label">소니야경</td>
+      <td>탁월한 야간 해상도와 장노출 기법으로 화려하고 드라마틱한 도시 야경을 만듭니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="shot with a Sony A7 III and 24mm lens, long exposure with smooth light trails, exceptional low-light clarity with clean noise-free shadows, vivid neon reflections on wet streets, crisp starburst points from city lights at narrow aperture, sharp resolving detail, dramatic nocturnal contrast, photorealistic" title="프롬프트만 복사"><span>shot with a Sony A7 III and 24mm lens, long exposure with smooth light trails, exceptional low-light clarity with clean noise-free shadows, vivid neon reflections on wet streets, crisp starburst points from city lights at narrow aperture, sharp resolving detail, dramatic nocturnal contrast, photorealistic</span><b>복사</b></button></td>
+      <td><code>fs-sony-night</code></td>
+    </tr>
+<tr>
+      <td class="num">4</td>
+      <td class="label">후지카페</td>
+      <td>클래식한 필름 시뮬레이션을 통해 아늑하고 아련한 분위기의 빈티지 감성 카페 스냅을 연출합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="using a Fujifilm X-T4 with Classic Chrome film simulation, muted desaturated shadows with soft warm highlights, distinctive Fuji color science with earthy greens and gentle amber tones, slightly faded nostalgic contrast, cozy vintage cafe atmosphere, fine filmic texture, photorealistic" title="프롬프트만 복사"><span>using a Fujifilm X-T4 with Classic Chrome film simulation, muted desaturated shadows with soft warm highlights, distinctive Fuji color science with earthy greens and gentle amber tones, slightly faded nostalgic contrast, cozy vintage cafe atmosphere, fine filmic texture, photorealistic</span><b>복사</b></button></td>
+      <td><code>fs-fuji-cafe</code></td>
+    </tr>
+<tr>
+      <td class="num">5</td>
+      <td class="label">후지청량</td>
+      <td>그림자에 감도는 초록빛 색감과 시원하고 청량한 톤으로 싱그러운 일본식 아날로그 무드를 표현합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="shot on Fujifilm Pro 400H film, signature cyan-green color shift in the shadows, airy pastel palette with soft blown highlights, low contrast and gently desaturated tones, beautiful natural skin rendering, ethereal cinematic Japanese analog mood, fine soft grain, photorealistic" title="프롬프트만 복사"><span>shot on Fujifilm Pro 400H film, signature cyan-green color shift in the shadows, airy pastel palette with soft blown highlights, low contrast and gently desaturated tones, beautiful natural skin rendering, ethereal cinematic Japanese analog mood, fine soft grain, photorealistic</span><b>복사</b></button></td>
+      <td><code>fs-fuji-fresh</code></td>
+    </tr>
+<tr>
+      <td class="num">6</td>
+      <td class="label">라이카흑백</td>
+      <td>라이카만의 깊이 있는 흑백 대비를 활용해 클래식하고 묵직한 거리 보도사진 룩을 연출합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="black and white street photograph captured with a Leica M10 and 35mm Summicron lens, signature Leica micro-contrast and three-dimensional pop, smooth rich tonal gradation from deep blacks to luminous whites, sharp glowing center rendering, classic high-contrast documentary look, photorealistic" title="프롬프트만 복사"><span>black and white street photograph captured with a Leica M10 and 35mm Summicron lens, signature Leica micro-contrast and three-dimensional pop, smooth rich tonal gradation from deep blacks to luminous whites, sharp glowing center rendering, classic high-contrast documentary look, photorealistic</span><b>복사</b></button></td>
+      <td><code>fs-leica-bw</code></td>
+    </tr>
+<tr>
+      <td class="num">7</td>
+      <td class="label">중형화보</td>
+      <td>하이엔드 중형 카메라의 압도적인 초고화질 질감과 스튜디오 조명으로 최고급 인물 화보를 만듭니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="captured with a Hasselblad medium format camera and 80mm lens, unmistakable medium-format rendering with creamy smooth tonal transitions and shallow natural depth of field, ultra-high micro-detail in skin and fabric, soft directional studio lighting, refined three-dimensional subject separation, premium editorial portrait, photorealistic" title="프롬프트만 복사"><span>captured with a Hasselblad medium format camera and 80mm lens, unmistakable medium-format rendering with creamy smooth tonal transitions and shallow natural depth of field, ultra-high micro-detail in skin and fabric, soft directional studio lighting, refined three-dimensional subject separation, premium editorial portrait, photorealistic</span><b>복사</b></button></td>
+      <td><code>fs-hasselblad</code></td>
+    </tr>
+<tr>
+      <td class="num">8</td>
+      <td class="label">포트라 400</td>
+      <td>부드러운 입자감과 크리미한 피부톤, 화사한 하이라이트로 로맨틱한 웨딩 감성을 표현합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="shot on 35mm Kodak Portra 400 film, signature warm-neutral skin tones and creamy pastel color palette, low gentle contrast with softly rolled-off blown highlights, fine subtle grain, forgiving natural-light latitude, romantic wedding mood, photorealistic" title="프롬프트만 복사"><span>shot on 35mm Kodak Portra 400 film, signature warm-neutral skin tones and creamy pastel color palette, low gentle contrast with softly rolled-off blown highlights, fine subtle grain, forgiving natural-light latitude, romantic wedding mood, photorealistic</span><b>복사</b></button></td>
+      <td><code>fs-portra400</code></td>
+    </tr>
+<tr>
+      <td class="num">9</td>
+      <td class="label">골드 200</td>
+      <td>특유의 따뜻한 황금빛 색감과 풍부한 saturation으로 정겹고 친근한 레트로 일상 스냅을 연출합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="shot on 35mm Kodak Gold 200, signature warm amber-golden color cast, nostalgic consumer-film warmth with punchy saturation and slightly yellow-green midtones, visible coarse vintage grain, snapshot-like retro everyday feel, photorealistic" title="프롬프트만 복사"><span>shot on 35mm Kodak Gold 200, signature warm amber-golden color cast, nostalgic consumer-film warmth with punchy saturation and slightly yellow-green midtones, visible coarse vintage grain, snapshot-like retro everyday feel, photorealistic</span><b>복사</b></button></td>
+      <td><code>fs-gold200</code></td>
+    </tr>
+<tr>
+      <td class="num">10</td>
+      <td class="label">엑타 100</td>
+      <td>그레인이 거의 없는 극강의 선명함과 쨍한 고채도로 레드와 블루가 강조된 풍경·건축을 만듭니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="shot on Kodak Ektar 100 film, the sharpest finest-grain color negative look, ultra-high saturation with vivid punchy reds and deep blues, slide-like high contrast and vibrance, crisp edge detail, near-grainless clean rendering, ideal for landscape and architecture, photorealistic" title="프롬프트만 복사"><span>shot on Kodak Ektar 100 film, the sharpest finest-grain color negative look, ultra-high saturation with vivid punchy reds and deep blues, slide-like high contrast and vibrance, crisp edge detail, near-grainless clean rendering, ideal for landscape and architecture, photorealistic</span><b>복사</b></button></td>
+      <td><code>fs-ektar100</code></td>
+    </tr>
+<tr>
+      <td class="num">11</td>
+      <td class="label">일포드 흑백</td>
+      <td>거친 입자감과 강한 대비의 일포드 HP5로 묵직하고 영화 같은 흑백 거리 사진을 연출합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="black and white analog photograph shot on Ilford HP5 pushed film, pronounced gritty visible grain structure, strong contrast with deep silver-rich blacks and bright highlights, raw textured documentary street mood, moody cinematic atmosphere, photorealistic" title="프롬프트만 복사"><span>black and white analog photograph shot on Ilford HP5 pushed film, pronounced gritty visible grain structure, strong contrast with deep silver-rich blacks and bright highlights, raw textured documentary street mood, moody cinematic atmosphere, photorealistic</span><b>복사</b></button></td>
+      <td><code>fs-ilford-bw</code></td>
+    </tr>
+<tr>
+      <td class="num">12</td>
+      <td class="label">시네스틸 800</td>
+      <td>밤 네온과 조명 주변에 붉은 빛번짐(할레이션)이 감도는 영화 같은 무드의 야간 컬러입니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="shot on CineStill 800T tungsten film, signature red halation glowing around bright light sources, cinematic teal-and-amber night palette, fine grain, moody neon-lit atmosphere, photorealistic" title="프롬프트만 복사"><span>shot on CineStill 800T tungsten film, signature red halation glowing around bright light sources, cinematic teal-and-amber night palette, fine grain, moody neon-lit atmosphere, photorealistic</span><b>복사</b></button></td>
+      <td><code>fs-cinestill800</code></td>
+    </tr>
+<tr>
+      <td class="num">13</td>
+      <td class="label">후지 벨비아 50</td>
+      <td>극한의 채도를 자랑하며, 쨍한 자연과 녹음을 표현하기 좋은 강렬한 풍경용 슬라이드 필름입니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="shot on Fujifilm Velvia 50 slide film, ultra-vivid punchy saturation with intense deep greens and reds, high contrast, crisp slide-film clarity, dramatic landscape color, photorealistic" title="프롬프트만 복사"><span>shot on Fujifilm Velvia 50 slide film, ultra-vivid punchy saturation with intense deep greens and reds, high contrast, crisp slide-film clarity, dramatic landscape color, photorealistic</span><b>복사</b></button></td>
+      <td><code>fs-velvia50</code></td>
+    </tr>
+<tr>
+      <td class="num">14</td>
+      <td class="label">로모크롬 퍼플</td>
+      <td>초록색을 보라색으로 바꿔버리는 초현실적인 색 치환으로 몽환적이고 독특한 분위기를 연출합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="shot on Lomochrome Purple film, surreal color-swapped palette turning greens into deep purple and lavender, dreamy psychedelic infrared-like tones, soft grain, otherworldly mood, photorealistic" title="프롬프트만 복사"><span>shot on Lomochrome Purple film, surreal color-swapped palette turning greens into deep purple and lavender, dreamy psychedelic infrared-like tones, soft grain, otherworldly mood, photorealistic</span><b>복사</b></button></td>
+      <td><code>fs-lomochrome-purple</code></td>
+    </tr>
+<tr>
+      <td class="num">15</td>
+      <td class="label">일포드 델타 3200</td>
+      <td>초고감도 특유의 폭발하는 거친 입자감을 가진 어둡고 딥한 무드의 흑백 필름입니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="black and white shot on Ilford Delta 3200, extreme heavy grain texture, gritty high-ISO low-light look, raw moody atmosphere with deep blacks, photorealistic" title="프롬프트만 복사"><span>black and white shot on Ilford Delta 3200, extreme heavy grain texture, gritty high-ISO low-light look, raw moody atmosphere with deep blacks, photorealistic</span><b>복사</b></button></td>
+      <td><code>fs-delta3200</code></td>
+    </tr>
+<tr>
+      <td class="num">16</td>
+      <td class="label">폴라로이드</td>
+      <td>특유의 뿌연 파스텔 톤과 빈티지한 감성으로 일상 스냅에 강한 인스턴트 사진 포맷입니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="instant Polaroid photo look, soft milky pastel colors, low contrast faded tones, slight vignette and creamy blur, nostalgic snapshot charm, photorealistic" title="프롬프트만 복사"><span>instant Polaroid photo look, soft milky pastel colors, low contrast faded tones, slight vignette and creamy blur, nostalgic snapshot charm, photorealistic</span><b>복사</b></button></td>
+      <td><code>fs-polaroid</code></td>
+    </tr>
+<tr>
+      <td class="num">17</td>
+      <td class="label">아그파 비스타</td>
+      <td>시원한 파란빛이 도는 색감으로, 일상 스냅에 청량하고 레트로한 무드를 더해줍니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="shot on Agfa Vista 200 film, signature cool blue color cast with punchy reds, slightly nostalgic consumer-film saturation, fine grain, everyday retro mood, photorealistic" title="프롬프트만 복사"><span>shot on Agfa Vista 200 film, signature cool blue color cast with punchy reds, slightly nostalgic consumer-film saturation, fine grain, everyday retro mood, photorealistic</span><b>복사</b></button></td>
+      <td><code>fs-agfa-vista</code></td>
+    </tr></tbody>
+    </table></div>
+  </section>
+<section class="card" id="cat-handcut">
+    <div class="section-head">
+      <div><p class="eyebrow">PRESET</p><h2>손연출 <small>handcut</small></h2></div>
+      <span class="count">8개 항목</span>
+    </div>
+    <p class="desc"><strong>어떤 손 연출 제품컷을 사용할까요?</strong> - 제품을 손으로 들거나 연출한 라이프스타일 컷 프리셋입니다. 하나만 선택할 수 있어요.</p>
+    <div class="table-wrap"><table><colgroup><col class="col-no"><col class="col-label"><col class="col-tip"><col class="col-prompt"><col class="col-id"></colgroup>
+      <thead><tr><th>No</th><th>메뉴/버튼명</th><th>툴팁</th><th>프롬프트 복사 셀</th><th>ID</th></tr></thead>
+      <tbody><tr>
+      <td class="num">1</td>
+      <td class="label">화이트 로브 랩 핸드컷</td>
+      <td>hand/0a7d...: 흰 로브와 무릎 위 자연스러운 손</td>
+      <td><button class="prompt-copy" type="button" data-copy="lifestyle hand-held product background, cropped body in a white robe or soft ivory clothing, hand holding the product near the lap, warm skin tones, natural daylight, intimate spa-like luxury mood, tight vertical composition, shallow depth of field" title="프롬프트만 복사"><span>lifestyle hand-held product background, cropped body in a white robe or soft ivory clothing, hand holding the product near the lap, warm skin tones, natural daylight, intimate spa-like luxury mood, tight vertical composition, shallow depth of field</span><b>복사</b></button></td>
+      <td><code>hand-preset-01</code></td>
+    </tr>
+<tr>
+      <td class="num">2</td>
+      <td class="label">크림 배경 드로퍼 핸드</td>
+      <td>hand/45f6...: 손이 드로퍼를 들어 올린 미니멀 컷</td>
+      <td><button class="prompt-copy" type="button" data-copy="minimal cream studio background, two hands interacting with a product and dropper above it, elegant fingertip gesture, strong negative space, warm soft light, clean cosmetic application composition, premium skincare editorial style" title="프롬프트만 복사"><span>minimal cream studio background, two hands interacting with a product and dropper above it, elegant fingertip gesture, strong negative space, warm soft light, clean cosmetic application composition, premium skincare editorial style</span><b>복사</b></button></td>
+      <td><code>hand-preset-02</code></td>
+    </tr>
+<tr>
+      <td class="num">3</td>
+      <td class="label">창가 햇살 손목 주얼리</td>
+      <td>hand/4baf...: 창문 빛과 손목 액세서리의 밝은 실내</td>
+      <td><button class="prompt-copy" type="button" data-copy="bright interior window-light background, hand holding the product upright near a sunlit wall, soft rectangular window shadows, delicate bracelet accents, warm natural daylight, clean lifestyle beauty product photography" title="프롬프트만 복사"><span>bright interior window-light background, hand holding the product upright near a sunlit wall, soft rectangular window shadows, delicate bracelet accents, warm natural daylight, clean lifestyle beauty product photography</span><b>복사</b></button></td>
+      <td><code>hand-preset-03</code></td>
+    </tr>
+<tr>
+      <td class="num">4</td>
+      <td class="label">데콜테 화이트 탑 라이프스타일</td>
+      <td>hand/58ec...: 어깨와 목선 근처에서 제품을 잡은 구도</td>
+      <td><button class="prompt-copy" type="button" data-copy="cropped lifestyle beauty background, hand holding the product against a bare shoulder and white top, warm skin texture, neutral beige indoor light, intimate fragrance editorial composition, shallow depth of field, soft natural highlights" title="프롬프트만 복사"><span>cropped lifestyle beauty background, hand holding the product against a bare shoulder and white top, warm skin texture, neutral beige indoor light, intimate fragrance editorial composition, shallow depth of field, soft natural highlights</span><b>복사</b></button></td>
+      <td><code>hand-preset-04</code></td>
+    </tr>
+<tr>
+      <td class="num">5</td>
+      <td class="label">브라운 극적 핸드 섀도우</td>
+      <td>hand/6673...: 어두운 갈색 배경과 강한 손 그림자</td>
+      <td><button class="prompt-copy" type="button" data-copy="dramatic warm brown studio background, hand presenting the product from below, strong side spotlight, deep shadow gradients, visible light haze or mist, cinematic luxury perfume mood, high contrast close-up composition" title="프롬프트만 복사"><span>dramatic warm brown studio background, hand presenting the product from below, strong side spotlight, deep shadow gradients, visible light haze or mist, cinematic luxury perfume mood, high contrast close-up composition</span><b>복사</b></button></td>
+      <td><code>hand-preset-05</code></td>
+    </tr>
+<tr>
+      <td class="num">6</td>
+      <td class="label">그린 섀도우 데이라이트 핸드</td>
+      <td>hand/6fed...: 사선 빛과 녹색 그림자의 손 클로즈업</td>
+      <td><button class="prompt-copy" type="button" data-copy="angled natural daylight background, hand holding the product against a pale wall with soft green shadow, diagonal sunbeam composition, clean minimal lifestyle mood, warm highlights, realistic editorial product photography" title="프롬프트만 복사"><span>angled natural daylight background, hand holding the product against a pale wall with soft green shadow, diagonal sunbeam composition, clean minimal lifestyle mood, warm highlights, realistic editorial product photography</span><b>복사</b></button></td>
+      <td><code>hand-preset-06</code></td>
+    </tr>
+<tr>
+      <td class="num">7</td>
+      <td class="label">니트 토르소 레드 네일</td>
+      <td>hand/d50c...: 아이보리 니트, 반지, 빨간 네일 손 연출</td>
+      <td><button class="prompt-copy" type="button" data-copy="cropped torso lifestyle background, ivory ribbed knit clothing, hands with rings and polished red nails holding the product, warm indoor light, tactile cozy texture, elegant fragrance editorial composition, shallow depth of field" title="프롬프트만 복사"><span>cropped torso lifestyle background, ivory ribbed knit clothing, hands with rings and polished red nails holding the product, warm indoor light, tactile cozy texture, elegant fragrance editorial composition, shallow depth of field</span><b>복사</b></button></td>
+      <td><code>hand-preset-07</code></td>
+    </tr>
+<tr>
+      <td class="num">8</td>
+      <td class="label">골드 드립 핸드 받침</td>
+      <td>hand/e279...: 손바닥 위 제품과 흘러내리는 황금 액체</td>
+      <td><button class="prompt-copy" type="button" data-copy="luxury hand pedestal composition, product standing on an open palm, vertical gold liquid dripping from above and over the hand, warm cream background, glossy honey-like texture, theatrical beauty advertising lighting, centered hero framing" title="프롬프트만 복사"><span>luxury hand pedestal composition, product standing on an open palm, vertical gold liquid dripping from above and over the hand, warm cream background, glossy honey-like texture, theatrical beauty advertising lighting, centered hero framing</span><b>복사</b></button></td>
+      <td><code>hand-preset-08</code></td>
+    </tr></tbody>
+    </table></div>
+</section>
+<section class="card" id="cat-filter">
+    <div class="section-head">
+      <div><p class="eyebrow">PRESET</p><h2>프리셋 <small>filter</small></h2></div>
+      <span class="count">57개 항목</span>
+    </div>
+    <p class="desc"><strong>어떤 스타일로 시작할까요?</strong> - 이미지 전체의 방향과 문장 뼈대를 먼저 고를 수 있습니다.</p>
+    <div class="table-wrap"><table><colgroup><col class="col-no"><col class="col-label"><col class="col-tip"><col class="col-prompt"><col class="col-id"></colgroup>
+      <thead><tr><th>No</th><th>메뉴/버튼명</th><th>툴팁</th><th>프롬프트 복사 셀</th><th>ID</th></tr></thead>
+      <tbody><tr class="section-row"><td colspan="5">영화적</td></tr>
+<tr>
+      <td class="num">1</td>
+      <td class="label">영화적 와이드 샷</td>
+      <td>극적인 조명과 공간적 깊이감이 있는 영화적 와이드 샷</td>
+      <td><button class="prompt-copy" type="button" data-copy="a cinematic wide shot, with dramatic lighting and strong spatial depth" title="프롬프트만 복사"><span>a cinematic wide shot, with dramatic lighting and strong spatial depth</span><b>복사</b></button></td>
+      <td><code>cinematic-wide</code></td>
+    </tr>
+<tr>
+      <td class="num">2</td>
+      <td class="label">로우키 조명</td>
+      <td>로우키 조명으로 포착된 분위기 있는 영화 스틸</td>
+      <td><button class="prompt-copy" type="button" data-copy="a moody cinematic film still, captured with low-key lighting" title="프롬프트만 복사"><span>a moody cinematic film still, captured with low-key lighting</span><b>복사</b></button></td>
+      <td><code>cinematic-still</code></td>
+    </tr>
+<tr>
+      <td class="num">3</td>
+      <td class="label">2.39:1 종횡비</td>
+      <td>2.39:1 종횡비로 담은 웅장한 영화적인 풍경</td>
+      <td><button class="prompt-copy" type="button" data-copy="an epic cinematic landscape, in 2.39:1 aspect ratio" title="프롬프트만 복사"><span>an epic cinematic landscape, in 2.39:1 aspect ratio</span><b>복사</b></button></td>
+      <td><code>cinematic-landscape</code></td>
+    </tr>
+<tr>
+      <td class="num">4</td>
+      <td class="label">극적인 액션 순간</td>
+      <td>모션 블러와 높은 대비로 표현된 극적인 액션 순간</td>
+      <td><button class="prompt-copy" type="button" data-copy="a dramatic action moment, with motion blur and high contrast" title="프롬프트만 복사"><span>a dramatic action moment, with motion blur and high contrast</span><b>복사</b></button></td>
+      <td><code>cinematic-action</code></td>
+    </tr>
+<tr>
+      <td class="num">5</td>
+      <td class="label">영화적 인물 사진</td>
+      <td>깊은 그림자로 영화 장면처럼 조명을 비춘 영화적 인물 사진</td>
+      <td><button class="prompt-copy" type="button" data-copy="a cinematic portrait, lit like a film scene with deep shadows" title="프롬프트만 복사"><span>a cinematic portrait, lit like a film scene with deep shadows</span><b>복사</b></button></td>
+      <td><code>cinematic-portrait</code></td>
+    </tr>
+<tr class="section-row"><td colspan="5">인물</td></tr>
+<tr>
+      <td class="num">6</td>
+      <td class="label">85mm 렌즈</td>
+      <td>85mm 렌즈로 촬영한 부드러운 스튜디오 조명의 세밀한 인물 사진</td>
+      <td><button class="prompt-copy" type="button" data-copy="a detailed portrait, shot on an 85mm lens with soft studio lighting" title="프롬프트만 복사"><span>a detailed portrait, shot on an 85mm lens with soft studio lighting</span><b>복사</b></button></td>
+      <td><code>portrait-85</code></td>
+    </tr>
+<tr>
+      <td class="num">7</td>
+      <td class="label">드라마틱한 인물 사진</td>
+      <td>강한 후광과 얕은 피사계 심도로 촬영한 드라마틱한 인물 사진</td>
+      <td><button class="prompt-copy" type="button" data-copy="a dramatic portrait, shot with strong backlight and shallow depth of field" title="프롬프트만 복사"><span>a dramatic portrait, shot with strong backlight and shallow depth of field</span><b>복사</b></button></td>
+      <td><code>portrait-backlight</code></td>
+    </tr>
+<tr>
+      <td class="num">8</td>
+      <td class="label">자연스러운 인물 사진</td>
+      <td>자연스러운 야외 조명에서 촬영한 자연스러운 인물 사진</td>
+      <td><button class="prompt-copy" type="button" data-copy="a natural portrait, photographed in natural outdoor light" title="프롬프트만 복사"><span>a natural portrait, photographed in natural outdoor light</span><b>복사</b></button></td>
+      <td><code>portrait-natural</code></td>
+    </tr>
+<tr>
+      <td class="num">9</td>
+      <td class="label">예술적인 인물 사진</td>
+      <td>스타일화된 색감 보정이 적용된 예술적인 인물 사진</td>
+      <td><button class="prompt-copy" type="button" data-copy="an artistic portrait, with stylized color grading" title="프롬프트만 복사"><span>an artistic portrait, with stylized color grading</span><b>복사</b></button></td>
+      <td><code>portrait-art</code></td>
+    </tr>
+<tr>
+      <td class="num">10</td>
+      <td class="label">고대비 인물 사진</td>
+      <td>로우 앵글에서 촬영한 고대비 인물 사진</td>
+      <td><button class="prompt-copy" type="button" data-copy="a high-contrast portrait, shot from a low angle" title="프롬프트만 복사"><span>a high-contrast portrait, shot from a low angle</span><b>복사</b></button></td>
+      <td><code>portrait-low</code></td>
+    </tr>
+<tr class="section-row"><td colspan="5">액션</td></tr>
+<tr>
+      <td class="num">11</td>
+      <td class="label">결정적인 순간</td>
+      <td>강한 움직임과 모션 블러로 포착된 결정적인 순간</td>
+      <td><button class="prompt-copy" type="button" data-copy="a decisive moment, captured with strong movement and motion blur" title="프롬프트만 복사"><span>a decisive moment, captured with strong movement and motion blur</span><b>복사</b></button></td>
+      <td><code>action-motion</code></td>
+    </tr>
+<tr>
+      <td class="num">12</td>
+      <td class="label">긴박한 장면</td>
+      <td>높은 대비와 역동적인 구도로 표현된 긴박한 장면</td>
+      <td><button class="prompt-copy" type="button" data-copy="an intense scene, expressed with high contrast and dynamic composition" title="프롬프트만 복사"><span>an intense scene, expressed with high contrast and dynamic composition</span><b>복사</b></button></td>
+      <td><code>action-intense</code></td>
+    </tr>
+<tr>
+      <td class="num">13</td>
+      <td class="label">액션 시퀀스</td>
+      <td>영화 예고편처럼 극적으로 연출한 액션 시퀀스</td>
+      <td><button class="prompt-copy" type="button" data-copy="a dramatic action sequence, staged like a cinematic trailer" title="프롬프트만 복사"><span>a dramatic action sequence, staged like a cinematic trailer</span><b>복사</b></button></td>
+      <td><code>action-trailer</code></td>
+    </tr>
+<tr class="section-row"><td colspan="5">무드/감성</td></tr>
+<tr>
+      <td class="num">14</td>
+      <td class="label">야간조명</td>
+      <td>내부 형광등과 외부 네온빛이 차분하게 섞여 들며 아날로그 필름 느낌의 몽환적인 야간 보케 배경을 표현합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="a night lighting mood, illuminated by urban practical lights and glowing storefront ambience" title="프롬프트만 복사"><span>a night lighting mood, illuminated by urban practical lights and glowing storefront ambience</span><b>복사</b></button></td>
+      <td><code>mood-night-light</code></td>
+    </tr>
+<tr>
+      <td class="num">15</td>
+      <td class="label">A24무드</td>
+      <td>정적이고 차분한 분위기 속에 물 빠진 듯한 따뜻한 색감으로 인디 영화(A24) 스타일의 감성을 만듭니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="an A24-inspired indie film mood, quiet tension, naturalistic color, understated cinematic atmosphere" title="프롬프트만 복사"><span>an A24-inspired indie film mood, quiet tension, naturalistic color, understated cinematic atmosphere</span><b>복사</b></button></td>
+      <td><code>mood-a24</code></td>
+    </tr>
+<tr>
+      <td class="num">16</td>
+      <td class="label">아날로그</td>
+      <td>부드러운 자연광과 차분한 그린·베이지 톤의 색감으로 감성적인 야외 다큐멘터리 사진 분위기를 표현합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="an analog mood, nostalgic film texture, soft contrast, warm imperfect realism" title="프롬프트만 복사"><span>an analog mood, nostalgic film texture, soft contrast, warm imperfect realism</span><b>복사</b></button></td>
+      <td><code>mood-analog</code></td>
+    </tr>
+<tr>
+      <td class="num">17</td>
+      <td class="label">시네마광</td>
+      <td>큰 창문을 통해 막 시작되는 골든아워의 따뜻한 햇살이 비쳐 극적인 명암 대비를 만듭니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="a cinematic light mood, dramatic directional glow, filmic highlights, emotional lighting atmosphere" title="프롬프트만 복사"><span>a cinematic light mood, dramatic directional glow, filmic highlights, emotional lighting atmosphere</span><b>복사</b></button></td>
+      <td><code>mood-cinema-light</code></td>
+    </tr>
+<tr>
+      <td class="num">18</td>
+      <td class="label">스냅렌즈</td>
+      <td>50mm 렌즈의 얕은 심도로 창밖 풍경을 부드럽게 아웃포커싱하여 감성적인 다큐멘터리 분위기를 표현합니다.</td>
+      <td><button class="prompt-copy" type="button" data-copy="a casual snap lens mood, candid lens feel, everyday realism, quick street photo sensibility" title="프롬프트만 복사"><span>a casual snap lens mood, candid lens feel, everyday realism, quick street photo sensibility</span><b>복사</b></button></td>
+      <td><code>mood-snap-lens</code></td>
+    </tr>
+<tr class="section-row"><td colspan="5">제품 배경 프리셋 - 스튜디오 빛과 그림자</td></tr>
+<tr>
+      <td class="num">19</td>
+      <td class="label">따뜻한 스포트라이트 반사대</td>
+      <td>bg/0118...: 낮은 시선의 베이지 반사 바닥과 강한 사선 빛</td>
+      <td><button class="prompt-copy" type="button" data-copy="premium product photo background, low eye-level composition on a glossy beige reflective surface, warm golden spotlight entering diagonally from the upper right, deep soft shadows, subtle amber glass-like accent objects near the base, minimal luxury studio atmosphere, shallow depth of field, photoreal commercial lighting" title="프롬프트만 복사"><span>premium product photo background, low eye-level composition on a glossy beige reflective surface, warm golden spotlight entering diagonally from the upper right, deep soft shadows, subtle amber glass-like accent objects near the base, minimal luxury studio atmosphere, shallow depth of field, photoreal commercial lighting</span><b>복사</b></button></td>
+      <td><code>bg-preset-01</code></td>
+    </tr>
+<tr>
+      <td class="num">20</td>
+      <td class="label">식물 그림자 미니멀 월</td>
+      <td>bg/0265...: 크림 벽과 잎 그림자가 만든 조용한 스튜디오</td>
+      <td><button class="prompt-copy" type="button" data-copy="minimal cream studio background, vertical product composition on a pale stone or plaster surface, strong botanical leaf shadows cast across the wall, warm diffused sunlight, clean negative space, soft beige tones, refined quiet luxury product photography" title="프롬프트만 복사"><span>minimal cream studio background, vertical product composition on a pale stone or plaster surface, strong botanical leaf shadows cast across the wall, warm diffused sunlight, clean negative space, soft beige tones, refined quiet luxury product photography</span><b>복사</b></button></td>
+      <td><code>bg-preset-02</code></td>
+    </tr>
+<tr>
+      <td class="num">21</td>
+      <td class="label">핑크 쉬어 패브릭 드레이프</td>
+      <td>bg/19d9...: 반투명 핑크 천이 감싸는 부드러운 세트</td>
+      <td><button class="prompt-copy" type="button" data-copy="soft pink translucent fabric draped around the product, vertical centered product composition, white-to-blush studio backdrop, airy sheer textile texture, gentle diffused light, romantic cosmetic advertising mood, clean premium product photography" title="프롬프트만 복사"><span>soft pink translucent fabric draped around the product, vertical centered product composition, white-to-blush studio backdrop, airy sheer textile texture, gentle diffused light, romantic cosmetic advertising mood, clean premium product photography</span><b>복사</b></button></td>
+      <td><code>bg-preset-05</code></td>
+    </tr>
+<tr>
+      <td class="num">22</td>
+      <td class="label">사막빛 하드 섀도우 받침</td>
+      <td>bg/3110...: 모래색 벽과 강한 삼각 그림자</td>
+      <td><button class="prompt-copy" type="button" data-copy="warm desert-toned studio background, small raised stone pedestal, dramatic hard-edged triangular sunlight and shadow across a beige wall, low front product placement, minimal composition, dry mineral texture, cinematic luxury still life" title="프롬프트만 복사"><span>warm desert-toned studio background, small raised stone pedestal, dramatic hard-edged triangular sunlight and shadow across a beige wall, low front product placement, minimal composition, dry mineral texture, cinematic luxury still life</span><b>복사</b></button></td>
+      <td><code>bg-preset-09</code></td>
+    </tr>
+<tr>
+      <td class="num">23</td>
+      <td class="label">화이트 쉬어 행잉 포켓</td>
+      <td>bg/3a62...: 흰 천 속에 매단 듯한 공중 구도</td>
+      <td><button class="prompt-copy" type="button" data-copy="white sheer fabric pocket suspended in a bright studio, product floating or nestled inside translucent textile folds, high-key white background, soft shadows, clean vertical composition, airy minimal beauty editorial style" title="프롬프트만 복사"><span>white sheer fabric pocket suspended in a bright studio, product floating or nestled inside translucent textile folds, high-key white background, soft shadows, clean vertical composition, airy minimal beauty editorial style</span><b>복사</b></button></td>
+      <td><code>bg-preset-11</code></td>
+    </tr>
+<tr>
+      <td class="num">24</td>
+      <td class="label">회색 돔 조형 스튜디오</td>
+      <td>bg/4962...: 곡면 조형물과 매트 그레이 배경</td>
+      <td><button class="prompt-copy" type="button" data-copy="matte gray sculptural studio set, rounded dome pedestal in the foreground, product centered on a smooth curved surface, cool neutral palette, soft top light, minimal architectural product photography, refined shadow gradients" title="프롬프트만 복사"><span>matte gray sculptural studio set, rounded dome pedestal in the foreground, product centered on a smooth curved surface, cool neutral palette, soft top light, minimal architectural product photography, refined shadow gradients</span><b>복사</b></button></td>
+      <td><code>bg-preset-13</code></td>
+    </tr>
+<tr>
+      <td class="num">25</td>
+      <td class="label">좁은 골든 빔 건축 세트</td>
+      <td>bg/960c...: 어두운 벽 사이 한 줄기 사선 빛</td>
+      <td><button class="prompt-copy" type="button" data-copy="narrow architectural studio niche, warm golden beam of sunlight cutting diagonally across a dark beige wall, product on a small ledge, high contrast shadow, minimal cinematic product still life, premium perfume-ad style" title="프롬프트만 복사"><span>narrow architectural studio niche, warm golden beam of sunlight cutting diagonally across a dark beige wall, product on a small ledge, high contrast shadow, minimal cinematic product still life, premium perfume-ad style</span><b>복사</b></button></td>
+      <td><code>bg-preset-27</code></td>
+    </tr>
+<tr>
+      <td class="num">26</td>
+      <td class="label">석재 블록과 리브드 벽</td>
+      <td>bg/f6a4...: 따뜻한 아이보리 구조물과 기하학 그림자</td>
+      <td><button class="prompt-copy" type="button" data-copy="sunlit ivory stone block studio, geometric blocks and a ribbed plaster wall, rounded stone accent on top, crisp directional shadows, warm neutral palette, minimal architectural luxury product background" title="프롬프트만 복사"><span>sunlit ivory stone block studio, geometric blocks and a ribbed plaster wall, rounded stone accent on top, crisp directional shadows, warm neutral palette, minimal architectural luxury product background</span><b>복사</b></button></td>
+      <td><code>bg-preset-36</code></td>
+    </tr>
+<tr>
+      <td class="num">27</td>
+      <td class="label">블랙 앤 화이트 손 그림자</td>
+      <td>bg/f7f6...: 어두운 제품 실루엣과 손 그림자 연출</td>
+      <td><button class="prompt-copy" type="button" data-copy="high-contrast black and white studio background, glossy reflective surface, dramatic hand shadow falling across a white wall, narrow side light, moody perfume still life composition, noir luxury advertising style" title="프롬프트만 복사"><span>high-contrast black and white studio background, glossy reflective surface, dramatic hand shadow falling across a white wall, narrow side light, moody perfume still life composition, noir luxury advertising style</span><b>복사</b></button></td>
+      <td><code>bg-preset-37</code></td>
+    </tr>
+<tr>
+      <td class="num">28</td>
+      <td class="label">샌드 알코브와 바위 받침</td>
+      <td>bg/fe9e...: 모래 질감 벽감과 자연석 받침</td>
+      <td><button class="prompt-copy" type="button" data-copy="sand-colored plaster alcove, rough mineral wall texture, product placed on a natural rock pedestal, warm spotlight from above, soft glowing highlights, earthy spa-like luxury background, clean centered product composition" title="프롬프트만 복사"><span>sand-colored plaster alcove, rough mineral wall texture, product placed on a natural rock pedestal, warm spotlight from above, soft glowing highlights, earthy spa-like luxury background, clean centered product composition</span><b>복사</b></button></td>
+      <td><code>bg-preset-38</code></td>
+    </tr>
+<tr class="section-row"><td colspan="5">제품 배경 프리셋 - 해변과 자연광</td></tr>
+<tr>
+      <td class="num">29</td>
+      <td class="label">지중해 바위 해변과 시트러스</td>
+      <td>bg/0f11...: 청록 바다, 바위, 오렌지 소품의 휴양지 배경</td>
+      <td><button class="prompt-copy" type="button" data-copy="Mediterranean seaside product background, rocky coastal cliff and turquoise water behind the product, sunlit stone ledge, scattered fresh citrus and small green succulents, bright summer daylight, crisp shadows, luxury vacation advertising composition" title="프롬프트만 복사"><span>Mediterranean seaside product background, rocky coastal cliff and turquoise water behind the product, sunlit stone ledge, scattered fresh citrus and small green succulents, bright summer daylight, crisp shadows, luxury vacation advertising composition</span><b>복사</b></button></td>
+      <td><code>bg-preset-04</code></td>
+    </tr>
+<tr>
+      <td class="num">30</td>
+      <td class="label">테니스 코트 블루 스카이</td>
+      <td>bg/1c99...: 푸른 하늘, 테니스 네트, 오렌지 공, 데이지</td>
+      <td><button class="prompt-copy" type="button" data-copy="bright sporty outdoor product background, blue sky and tennis court net behind the product, orange ball floating as a graphic accent, small white daisies, clean white ledge, sunny commercial composition, fresh energetic summer palette" title="프롬프트만 복사"><span>bright sporty outdoor product background, blue sky and tennis court net behind the product, orange ball floating as a graphic accent, small white daisies, clean white ledge, sunny commercial composition, fresh energetic summer palette</span><b>복사</b></button></td>
+      <td><code>bg-preset-06</code></td>
+    </tr>
+<tr>
+      <td class="num">31</td>
+      <td class="label">오션 윈도우 화이트 린넨</td>
+      <td>bg/1cae...: 바다 수평선과 흰 천, 레몬 오브제</td>
+      <td><button class="prompt-copy" type="button" data-copy="fresh ocean-view product background, white linen surface in the foreground, sparkling turquoise sea and pale blue horizon behind, bright direct sunlight, a few yellow citrus accents, breezy coastal resort mood, clean centered composition" title="프롬프트만 복사"><span>fresh ocean-view product background, white linen surface in the foreground, sparkling turquoise sea and pale blue horizon behind, bright direct sunlight, a few yellow citrus accents, breezy coastal resort mood, clean centered composition</span><b>복사</b></button></td>
+      <td><code>bg-preset-07</code></td>
+    </tr>
+<tr>
+      <td class="num">32</td>
+      <td class="label">아이스 캐니언 워터 리플렉션</td>
+      <td>bg/3ed6...: 푸른 빙벽과 물 반사 중심 구도</td>
+      <td><button class="prompt-copy" type="button" data-copy="cool blue ice canyon product background, vertical product centered between tall icy rock walls, still water reflection below, pale sky gradient, crisp cool light, symmetrical luxury skincare composition, clean refreshing atmosphere" title="프롬프트만 복사"><span>cool blue ice canyon product background, vertical product centered between tall icy rock walls, still water reflection below, pale sky gradient, crisp cool light, symmetrical luxury skincare composition, clean refreshing atmosphere</span><b>복사</b></button></td>
+      <td><code>bg-preset-12</code></td>
+    </tr>
+<tr>
+      <td class="num">33</td>
+      <td class="label">안개 낀 초록 지평선</td>
+      <td>bg/5c25...: 연한 하늘, 풀과 고사리 실루엣</td>
+      <td><button class="prompt-copy" type="button" data-copy="soft misty outdoor background, pale blue sky fading into a green horizon, delicate fern silhouettes and wild grasses around the product, muted sage and cream palette, calm natural daylight, minimalist botanical product photography" title="프롬프트만 복사"><span>soft misty outdoor background, pale blue sky fading into a green horizon, delicate fern silhouettes and wild grasses around the product, muted sage and cream palette, calm natural daylight, minimalist botanical product photography</span><b>복사</b></button></td>
+      <td><code>bg-preset-17</code></td>
+    </tr>
+<tr>
+      <td class="num">34</td>
+      <td class="label">스노이 마운틴 아이리스</td>
+      <td>bg/9429...: 흰 바위와 파란 하늘, 보라색 꽃</td>
+      <td><button class="prompt-copy" type="button" data-copy="alpine outdoor product background, white snow-like rock surface, bright blue sky with soft clouds, tall purple iris flowers framing the product, crisp mountain sunlight, airy fresh botanical advertising style" title="프롬프트만 복사"><span>alpine outdoor product background, white snow-like rock surface, bright blue sky with soft clouds, tall purple iris flowers framing the product, crisp mountain sunlight, airy fresh botanical advertising style</span><b>복사</b></button></td>
+      <td><code>bg-preset-26</code></td>
+    </tr>
+<tr>
+      <td class="num">35</td>
+      <td class="label">바다 창가 석재 선반</td>
+      <td>bg/cb06...: 해변을 바라보는 미니멀 실내 창가</td>
+      <td><button class="prompt-copy" type="button" data-copy="minimal seaside window background, product on a pale stone windowsill, wide ocean view and soft horizon outside, thin curtain edge, natural daylight from the window, quiet clean luxury composition, airy neutral interior" title="프롬프트만 복사"><span>minimal seaside window background, product on a pale stone windowsill, wide ocean view and soft horizon outside, thin curtain edge, natural daylight from the window, quiet clean luxury composition, airy neutral interior</span><b>복사</b></button></td>
+      <td><code>bg-preset-31</code></td>
+    </tr>
+<tr>
+      <td class="num">36</td>
+      <td class="label">화이트 커튼 오션 미니멀</td>
+      <td>bg/eb02...: 흰 커튼과 바다 전망의 밝은 욕실 무드</td>
+      <td><button class="prompt-copy" type="button" data-copy="bright minimal interior with ocean view, white curtain and pale wall framing the product on a clean windowsill, soft coastal daylight, small citrus accent, restrained luxury bathroom atmosphere, lots of negative space" title="프롬프트만 복사"><span>bright minimal interior with ocean view, white curtain and pale wall framing the product on a clean windowsill, soft coastal daylight, small citrus accent, restrained luxury bathroom atmosphere, lots of negative space</span><b>복사</b></button></td>
+      <td><code>bg-preset-34</code></td>
+    </tr>
+<tr class="section-row"><td colspan="5">제품 배경 프리셋 - 플라워와 보태니컬</td></tr>
+<tr>
+      <td class="num">37</td>
+      <td class="label">파스텔 구름과 과일 플로럴</td>
+      <td>bg/0c08...: 하늘색 배경, 솜구름, 과일과 꽃 장식</td>
+      <td><button class="prompt-copy" type="button" data-copy="pastel sky-blue studio background with soft white clouds, product on a small pink pedestal, surrounding peaches, citrus slices, daisies, roses and green leaves, dreamy spring cosmetic advertising style, bright high-key lighting, centered vertical composition" title="프롬프트만 복사"><span>pastel sky-blue studio background with soft white clouds, product on a small pink pedestal, surrounding peaches, citrus slices, daisies, roses and green leaves, dreamy spring cosmetic advertising style, bright high-key lighting, centered vertical composition</span><b>복사</b></button></td>
+      <td><code>bg-preset-03</code></td>
+    </tr>
+<tr>
+      <td class="num">38</td>
+      <td class="label">배와 황금 잎 베이지</td>
+      <td>bg/5759...: 따뜻한 베이지, 배, 얇은 금빛 잎</td>
+      <td><button class="prompt-copy" type="button" data-copy="warm beige botanical still life background, product centered with pear-shaped fruit and translucent golden leaves around it, soft studio light, delicate shadow, elegant natural fragrance mood, muted cream and honey color palette" title="프롬프트만 복사"><span>warm beige botanical still life background, product centered with pear-shaped fruit and translucent golden leaves around it, soft studio light, delicate shadow, elegant natural fragrance mood, muted cream and honey color palette</span><b>복사</b></button></td>
+      <td><code>bg-preset-15</code></td>
+    </tr>
+<tr>
+      <td class="num">39</td>
+      <td class="label">화이트 튤립 클린 보태니컬</td>
+      <td>bg/5ba5...: 하얀 꽃과 초록 줄기의 밝은 배경</td>
+      <td><button class="prompt-copy" type="button" data-copy="clean white botanical product background, large white tulip petals and green stems framing the product from the sides, high-key studio light, crisp fresh texture, elegant minimal floral beauty composition" title="프롬프트만 복사"><span>clean white botanical product background, large white tulip petals and green stems framing the product from the sides, high-key studio light, crisp fresh texture, elegant minimal floral beauty composition</span><b>복사</b></button></td>
+      <td><code>bg-preset-16</code></td>
+    </tr>
+<tr>
+      <td class="num">40</td>
+      <td class="label">크림 플라워 대각 구도</td>
+      <td>bg/5cc5...: 부드러운 크림 배경과 꽃가지 대각선</td>
+      <td><button class="prompt-copy" type="button" data-copy="warm cream studio background, product angled diagonally with a delicate flower branch and soft petal accents, gentle peach shadows, minimal romantic beauty composition, clean commercial lighting" title="프롬프트만 복사"><span>warm cream studio background, product angled diagonally with a delicate flower branch and soft petal accents, gentle peach shadows, minimal romantic beauty composition, clean commercial lighting</span><b>복사</b></button></td>
+      <td><code>bg-preset-19</code></td>
+    </tr>
+<tr>
+      <td class="num">41</td>
+      <td class="label">시트러스 블라썸 플로팅</td>
+      <td>bg/7d39...: 오렌지 조각과 꽃잎이 공중에 떠 있는 세트</td>
+      <td><button class="prompt-copy" type="button" data-copy="bright citrus blossom product background, floating orange slices, white petals and green leaves around a central product, warm sunlight, airy motion composition, glossy premium fragrance advertising style" title="프롬프트만 복사"><span>bright citrus blossom product background, floating orange slices, white petals and green leaves around a central product, warm sunlight, airy motion composition, glossy premium fragrance advertising style</span><b>복사</b></button></td>
+      <td><code>bg-preset-22</code></td>
+    </tr>
+<tr>
+      <td class="num">42</td>
+      <td class="label">아이스 블루 플라워 크림</td>
+      <td>bg/848f...: 파란 꽃과 차가운 스킨케어 무드</td>
+      <td><button class="prompt-copy" type="button" data-copy="cool icy blue floral skincare background, product centered with translucent pale blue petals and dark berry-like branches, frosted white surface, clean bright light, refreshing premium beauty-ad composition" title="프롬프트만 복사"><span>cool icy blue floral skincare background, product centered with translucent pale blue petals and dark berry-like branches, frosted white surface, clean bright light, refreshing premium beauty-ad composition</span><b>복사</b></button></td>
+      <td><code>bg-preset-23</code></td>
+    </tr>
+<tr>
+      <td class="num">43</td>
+      <td class="label">핑크 플라워 골드 받침</td>
+      <td>bg/91d5...: 큰 분홍 꽃과 금빛 베이스</td>
+      <td><button class="prompt-copy" type="button" data-copy="soft pink floral product background, oversized delicate blossom behind the product, pale pink feather-like petals, small gold-toned pedestal or base, clean white studio, romantic luxury fragrance composition" title="프롬프트만 복사"><span>soft pink floral product background, oversized delicate blossom behind the product, pale pink feather-like petals, small gold-toned pedestal or base, clean white studio, romantic luxury fragrance composition</span><b>복사</b></button></td>
+      <td><code>bg-preset-24</code></td>
+    </tr>
+<tr>
+      <td class="num">44</td>
+      <td class="label">햇살 식물 테이블</td>
+      <td>bg/934a...: 나뭇잎 그림자와 꽃잎이 흩어진 테이블</td>
+      <td><button class="prompt-copy" type="button" data-copy="sun-dappled botanical tabletop background, warm natural light filtering through leaves, scattered petals and small flowers around the product, textured cream cloth, nostalgic floral still life, soft editorial product photography" title="프롬프트만 복사"><span>sun-dappled botanical tabletop background, warm natural light filtering through leaves, scattered petals and small flowers around the product, textured cream cloth, nostalgic floral still life, soft editorial product photography</span><b>복사</b></button></td>
+      <td><code>bg-preset-25</code></td>
+    </tr>
+<tr>
+      <td class="num">45</td>
+      <td class="label">코랄 핑크 피오니 월</td>
+      <td>bg/983a...: 분홍 배경과 풍성한 작약 꽃</td>
+      <td><button class="prompt-copy" type="button" data-copy="coral pink studio background, product centered among large peony blossoms and soft pink petals, clean front-facing advertising composition, fresh floral luxury mood, bright controlled studio light" title="프롬프트만 복사"><span>coral pink studio background, product centered among large peony blossoms and soft pink petals, clean front-facing advertising composition, fresh floral luxury mood, bright controlled studio light</span><b>복사</b></button></td>
+      <td><code>bg-preset-28</code></td>
+    </tr>
+<tr>
+      <td class="num">46</td>
+      <td class="label">로터스 워터 플랫레이</td>
+      <td>bg/a692...: 물 위 연꽃과 유리 반사 질감</td>
+      <td><button class="prompt-copy" type="button" data-copy="dark teal lotus water background, product placed on a reflective watery surface, pink lotus flowers and petals surrounding it, rippling water texture, soft natural highlights, serene spa luxury product composition" title="프롬프트만 복사"><span>dark teal lotus water background, product placed on a reflective watery surface, pink lotus flowers and petals surrounding it, rippling water texture, soft natural highlights, serene spa luxury product composition</span><b>복사</b></button></td>
+      <td><code>bg-preset-29</code></td>
+    </tr>
+<tr>
+      <td class="num">47</td>
+      <td class="label">몽환 야생화 메도우</td>
+      <td>bg/b99b...: 보라/핑크 들꽃과 얕은 심도</td>
+      <td><button class="prompt-copy" type="button" data-copy="dreamy wildflower meadow background, product nestled among purple and pink flowers, soft bokeh, shallow depth of field, warm natural sunlight, romantic outdoor botanical product photography, painterly blurred foreground" title="프롬프트만 복사"><span>dreamy wildflower meadow background, product nestled among purple and pink flowers, soft bokeh, shallow depth of field, warm natural sunlight, romantic outdoor botanical product photography, painterly blurred foreground</span><b>복사</b></button></td>
+      <td><code>bg-preset-30</code></td>
+    </tr>
+<tr>
+      <td class="num">48</td>
+      <td class="label">화이트 배경 마젠타 꽃잎</td>
+      <td>bg/d371...: 선명한 자주 꽃잎이 감싸는 클린 컷</td>
+      <td><button class="prompt-copy" type="button" data-copy="clean white studio background with vivid magenta flower petals swirling around the product, crisp high-key light, soft petal motion, elegant botanical beauty advertising composition, minimal shadows" title="프롬프트만 복사"><span>clean white studio background with vivid magenta flower petals swirling around the product, crisp high-key light, soft petal motion, elegant botanical beauty advertising composition, minimal shadows</span><b>복사</b></button></td>
+      <td><code>bg-preset-33</code></td>
+    </tr>
+<tr>
+      <td class="num">49</td>
+      <td class="label">노란 꽃잎 터널</td>
+      <td>bg/f563...: 노란 꽃잎이 원형 프레임을 만드는 구도</td>
+      <td><button class="prompt-copy" type="button" data-copy="yellow floral tunnel background, large translucent petals forming a circular frame around the product, warm backlight, soft organic shadows, centered vertical composition, bright botanical luxury advertising style" title="프롬프트만 복사"><span>yellow floral tunnel background, large translucent petals forming a circular frame around the product, warm backlight, soft organic shadows, centered vertical composition, bright botanical luxury advertising style</span><b>복사</b></button></td>
+      <td><code>bg-preset-35</code></td>
+    </tr>
+<tr>
+      <td class="num">50</td>
+      <td class="label">핑크 블라썸 클린 세럼</td>
+      <td>bg/fefa...: 큰 분홍 꽃 뒤의 깨끗한 화장품 컷</td>
+      <td><button class="prompt-copy" type="button" data-copy="clean white beauty studio background, large soft pink blossom directly behind the product, a few delicate petals at the base, bright even lighting, refined skincare advertising style, minimal elegant composition" title="프롬프트만 복사"><span>clean white beauty studio background, large soft pink blossom directly behind the product, a few delicate petals at the base, bright even lighting, refined skincare advertising style, minimal elegant composition</span><b>복사</b></button></td>
+      <td><code>bg-preset-39</code></td>
+    </tr>
+<tr class="section-row"><td colspan="5">제품 배경 프리셋 - 액체, 텍스처와 조형 오브제</td></tr>
+<tr>
+      <td class="num">51</td>
+      <td class="label">퍼플 리퀴드 스플래시 그래픽</td>
+      <td>bg/30f8...: 보라 배경과 분홍 액체 물결</td>
+      <td><button class="prompt-copy" type="button" data-copy="vivid purple gradient studio background, translucent magenta liquid splash wrapping around the product, glossy reflective fluid texture, energetic beauty advertising poster style, centered hero composition, polished high-contrast lighting" title="프롬프트만 복사"><span>vivid purple gradient studio background, translucent magenta liquid splash wrapping around the product, glossy reflective fluid texture, energetic beauty advertising poster style, centered hero composition, polished high-contrast lighting</span><b>복사</b></button></td>
+      <td><code>bg-preset-08</code></td>
+    </tr>
+<tr>
+      <td class="num">52</td>
+      <td class="label">테라코타 구형 오브제 스택</td>
+      <td>bg/3a47...: 주황 갈색 원형 오브제와 따뜻한 스튜디오</td>
+      <td><button class="prompt-copy" type="button" data-copy="luxury fragrance still life, product immersed within a thick clear glass block, warm amber glow washing across a soft high-key background, glossy mirror tabletop with elegant reflections, smooth sculptural orange spheres glowing with translucent light, refraction and caustics through glass, hard directional sunlight creating crisp elegant shadows, golden amber monochrome atmosphere, minimalist surreal composition, editorial perfume advertising, photorealistic, high-end, ultra detailed" title="프롬프트만 복사"><span>luxury fragrance still life, product immersed within a thick clear glass block, warm amber glow washing across a soft high-key background, glossy mirror tabletop with elegant reflections, smooth sculptural orange spheres glowing with translucent light, refraction and caustics through glass, hard directional sunlight creating crisp elegant shadows, golden amber monochrome atmosphere, minimalist surreal composition, editorial perfume advertising, photorealistic, high-end, ultra detailed</span><b>복사</b></button></td>
+      <td><code>bg-preset-10</code></td>
+    </tr>
+<tr>
+      <td class="num">53</td>
+      <td class="label">샴페인 리플 액체 표면</td>
+      <td>bg/54cd...: 금빛 액체 파문과 유리 반사</td>
+      <td><button class="prompt-copy" type="button" data-copy="champagne-gold liquid ripple background, glossy flowing surface surrounding the product, specular highlights and soft caustic reflections, warm metallic palette, macro luxury beauty still life, shallow depth of field" title="프롬프트만 복사"><span>champagne-gold liquid ripple background, glossy flowing surface surrounding the product, specular highlights and soft caustic reflections, warm metallic palette, macro luxury beauty still life, shallow depth of field</span><b>복사</b></button></td>
+      <td><code>bg-preset-14</code></td>
+    </tr>
+<tr>
+      <td class="num">54</td>
+      <td class="label">누드 새틴과 진주 조형</td>
+      <td>bg/5c90...: 살구빛 천, 진주, 조각상 같은 소품</td>
+      <td><button class="prompt-copy" type="button" data-copy="nude satin fabric background with pearl-like sculptural objects, soft cream and champagne tones, delicate folds, gentle diffused light, elegant feminine luxury product composition, refined tactile texture" title="프롬프트만 복사"><span>nude satin fabric background with pearl-like sculptural objects, soft cream and champagne tones, delicate folds, gentle diffused light, elegant feminine luxury product composition, refined tactile texture</span><b>복사</b></button></td>
+      <td><code>bg-preset-18</code></td>
+    </tr>
+<tr>
+      <td class="num">55</td>
+      <td class="label">다크 포레스트 모스</td>
+      <td>bg/7025...: 어두운 숲과 젖은 이끼 텍스처</td>
+      <td><button class="prompt-copy" type="button" data-copy="dark forest product background, product floating or placed among deep green moss and dense foliage, low-key natural light, wet organic texture, mysterious botanical luxury atmosphere, high contrast with soft highlights" title="프롬프트만 복사"><span>dark forest product background, product floating or placed among deep green moss and dense foliage, low-key natural light, wet organic texture, mysterious botanical luxury atmosphere, high contrast with soft highlights</span><b>복사</b></button></td>
+      <td><code>bg-preset-20</code></td>
+    </tr>
+<tr>
+      <td class="num">56</td>
+      <td class="label">허니 골드 스플래시</td>
+      <td>bg/74df...: 노란 꿀 액체가 튀는 고광택 배경</td>
+      <td><button class="prompt-copy" type="button" data-copy="warm honey-gold product background, glossy amber liquid splash rising around the product, small droplets, creamy yellow studio backdrop, bright commercial lighting, luxurious edible-beauty texture, centered hero shot" title="프롬프트만 복사"><span>warm honey-gold product background, glossy amber liquid splash rising around the product, small droplets, creamy yellow studio backdrop, bright commercial lighting, luxurious edible-beauty texture, centered hero shot</span><b>복사</b></button></td>
+      <td><code>bg-preset-21</code></td>
+    </tr>
+<tr>
+      <td class="num">57</td>
+      <td class="label">브라운 세라믹 조각 받침</td>
+      <td>bg/bff3...: 갈색 배경과 깨진 세라믹 받침</td>
+      <td><button class="prompt-copy" type="button" data-copy="warm brown monochrome studio background, product balanced on a broken ceramic shard or sculptural clay pedestal, diagonal composition, soft spotlight, matte earthy texture, modern luxury still life" title="프롬프트만 복사"><span>warm brown monochrome studio background, product balanced on a broken ceramic shard or sculptural clay pedestal, diagonal composition, soft spotlight, matte earthy texture, modern luxury still life</span><b>복사</b></button></td>
+      <td><code>bg-preset-32</code></td>
+    </tr>
+</tbody>
+    </table></div>
+  </section>
+<section class="card" id="cat-technique">
+    <div class="section-head">
+      <div><p class="eyebrow">FINISHING</p><h2>필름 효과 (현재 직접 노출 안 됨) <small>technique</small></h2></div>
+      <span class="count">6개 항목</span>
+    </div>
+    <p class="desc"><strong>필름 효과를 더해볼까요?</strong> - 빛 번짐, 색수차, 그레인 같은 필름 기법을 선택합니다.</p>
+    <div class="table-wrap"><table><colgroup><col class="col-no"><col class="col-label"><col class="col-tip"><col class="col-prompt"><col class="col-id"></colgroup>
+      <thead><tr><th>No</th><th>메뉴/버튼명</th><th>툴팁</th><th>프롬프트 복사 셀</th><th>ID</th></tr></thead>
+      <tbody><tr>
+      <td class="num">1</td>
+      <td class="label">01 Halation (빛 번짐)</td>
+      <td>강한 빛이 번져 몽환적이고 부드러운 느낌을 줘요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="halation, soft glow bleeding around highlights" title="프롬프트만 복사"><span>halation, soft glow bleeding around highlights</span><b>복사</b></button></td>
+      <td><code>tech-halation</code></td>
+    </tr>
+<tr>
+      <td class="num">2</td>
+      <td class="label">02 Bloom (하이라이트 퍼짐)</td>
+      <td>밝은 영역이 퍼져서 꿈같은 분위기를 만들어요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="bloom effect, glowing soft highlights" title="프롬프트만 복사"><span>bloom effect, glowing soft highlights</span><b>복사</b></button></td>
+      <td><code>tech-bloom</code></td>
+    </tr>
+<tr>
+      <td class="num">3</td>
+      <td class="label">03 Lifted Blacks (검정 띄우기)</td>
+      <td>검정을 완전한 검정이 아닌 살짝 회색으로 띄워요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="lifted blacks, faded low-contrast shadows" title="프롬프트만 복사"><span>lifted blacks, faded low-contrast shadows</span><b>복사</b></button></td>
+      <td><code>tech-lifted-blacks</code></td>
+    </tr>
+<tr>
+      <td class="num">4</td>
+      <td class="label">04 Chromatic Aberration (색수차)</td>
+      <td>렌즈 끝 부분의 색이 살짝 어긋나 필름 느낌을 강화해요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="subtle chromatic aberration, color fringing" title="프롬프트만 복사"><span>subtle chromatic aberration, color fringing</span><b>복사</b></button></td>
+      <td><code>tech-chromatic</code></td>
+    </tr>
+<tr>
+      <td class="num">5</td>
+      <td class="label">05 Soft Diffusion (확산 필터 효과)</td>
+      <td>빛을 부드럽게 퍼뜨려 피부와 장면을 은은하게 만들어요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="soft diffusion filter, dreamy light scatter" title="프롬프트만 복사"><span>soft diffusion filter, dreamy light scatter</span><b>복사</b></button></td>
+      <td><code>tech-soft-diffusion</code></td>
+    </tr>
+<tr>
+      <td class="num">6</td>
+      <td class="label">06 Grain (필름 그레인)</td>
+      <td>필름 고유의 입자가 만들어내는 아날로그 질감을 더해요.</td>
+      <td><button class="prompt-copy" type="button" data-copy="fine film grain, analog texture" title="프롬프트만 복사"><span>fine film grain, analog texture</span><b>복사</b></button></td>
+      <td><code>tech-grain</code></td>
+    </tr></tbody>
+    </table></div>
+  </section>
+</div>
+<script>
+document.addEventListener('click', async (event) => { const button = event.target.closest('.prompt-copy'); if (!button) return; const text = button.getAttribute('data-copy') || ''; try { if (navigator.clipboard && navigator.clipboard.writeText) await navigator.clipboard.writeText(text); else { const area = document.createElement('textarea'); area.value = text; area.style.position = 'fixed'; area.style.opacity = '0'; document.body.appendChild(area); area.select(); document.execCommand('copy'); area.remove(); } const label = button.querySelector('b'); const old = label.textContent; button.classList.add('copied'); label.textContent = '복사됨'; setTimeout(() => { button.classList.remove('copied'); label.textContent = old; }, 1200); } catch (e) { alert('복사에 실패했습니다. 브라우저 권한을 확인하세요.'); } });
+</script>
+</body>
+</html>
